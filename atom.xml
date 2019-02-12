@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>小心轻放</title>
-  
+  <title>Something New</title>
+  <icon>https://www.gravatar.com/avatar/ab14b44454722e960fd9b8f5eafd9185</icon>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -10,8 +10,8 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>winchao</name>
-    
+    <name>zmm</name>
+    <email>cz920902@gmail.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
