@@ -49,15 +49,15 @@
     <link href="http://yoursite.com/2019/02/12/2019-s-todo-list/"/>
     <id>http://yoursite.com/2019/02/12/2019-s-todo-list/</id>
     <published>2019-02-12T07:01:49.000Z</published>
-    <updated>2019-02-13T06:54:39.003Z</updated>
+    <updated>2019-02-13T06:55:32.563Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><h4 id="接入层"><a href="#接入层" class="headerlink" title="接入层"></a>接入层</h4><pre><code>- 负载均衡- 流量控制- 降级- 熔断- 防雪崩- ...</code></pre><h4 id="逻辑层"><a href="#逻辑层" class="headerlink" title="逻辑层"></a>逻辑层</h4><pre><code>- 可扩展 (水平/垂直)- 隔离- 解耦- RPC (dubbo/thrift/grpc)- 连接池- 消息队列 (RocketMQ/RabbitMQ/Kafka/ZeroMQ/redis)- 延迟加载- 数据预读- 轮询通知- 事件系统- 模块化</code></pre><h4 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h4><pre><code>- 缓存 (缓存穿透/缓存雪崩/缓存击穿)- 一致性(CAP/分布式锁/一致性算法/幂等)- 主从架构- 去中心化架构- 唯一ID生成- 一致性Hash- 数据库扩展</code></pre><h4 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h4><pre><code>- 服务注册与发现 (名字服务)- 服务路由- 服务网关- 配置中心</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><pre><code>- 监控系统- 日志系统- 测试- 平滑启动- 异地多活- docker**待续...**</code></pre>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;分布式系统&quot;&gt;&lt;a href=&quot;#分布式系统&quot; class=&quot;headerlink&quot; title=&quot;分布式系统&quot;&gt;&lt;/a&gt;分布式系统&lt;/h2&gt;
+        &lt;h2 id=&quot;分布式系统&quot;&gt;&lt;a href=&quot;#分布式系统&quot; class=&quot;headerlink&quot; title=&quot;分布式系统&quot;&gt;&lt;/a&gt;分布式系统&lt;/h2&gt;&lt;h4 id=&quot;接入层&quot;&gt;&lt;a href=&quot;#接入层&quot; class=&quot;headerlink&quot; title=&quot;接入层&quot;&gt;&lt;/
       
     
     </summary>
