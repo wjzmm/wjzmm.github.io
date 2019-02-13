@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-03-01T08:06:27.611Z</updated>
+  <updated>2019-02-13T03:11:42.481Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>简单理解正向代理，反向代理与负载均衡</title>
+    <link href="http://yoursite.com/2019/02/13/%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <id>http://yoursite.com/2019/02/13/简单理解正向代理，反向代理与负载均衡/</id>
+    <published>2019-02-13T03:08:00.000Z</published>
+    <updated>2019-02-13T03:11:42.481Z</updated>
+    
+    <content type="html"><![CDATA[<p>正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。<br><a href="https://postimg.cc/wtc28nbf" target="_blank" rel="noopener"><img src="https://i.postimg.cc/Gp65YCPC/3.png" alt="正向代理与反向代理"></a><br>正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。<br>而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Google官网的时候，代理服务器请将我们的请求转发到某一台服务器上，此时的代理就是反向代理。<br>负载均衡的主要目标就是将请求分发到几台服务器上来环境单台服务器的压力，提高服务质量。反向代理是实现负载均衡的实现手段，但反向代理的作用又不仅限于负载均衡。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。&lt;br&gt;&lt;a href=&quot;https://postimg.cc/wtc28nbf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https:/
+      
+    
+    </summary>
+    
+    
+      <category term="正向代理 反向代理 负载均衡" scheme="http://yoursite.com/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019&#39;s todo list</title>
+    <link href="http://yoursite.com/2019/02/12/2019-s-todo-list/"/>
+    <id>http://yoursite.com/2019/02/12/2019-s-todo-list/</id>
+    <published>2019-02-12T07:01:49.000Z</published>
+    <updated>2019-02-12T07:13:19.870Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
