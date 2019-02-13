@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Something New</title>
-  <icon>https://www.gravatar.com/avatar/ab14b44454722e960fd9b8f5eafd9185</icon>
+  <title>404Found</title>
   
+  <subtitle>瞅啥啥不会，做啥啥不对</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,8 +10,8 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>zmm</name>
-    <email>cz920902@gmail.com</email>
+    <name>把星子放入眸</name>
+    
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
