@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>简单理解正向代理，反向代理与负载均衡 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goog">
-<meta name="keywords" content="正向代理 反向代理 负载均衡">
+  <meta name="description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goo">
+<meta name="keywords" content="-正向代理 -反向代理 -负载均衡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单理解正向代理，反向代理与负载均衡">
 <meta property="og:url" content="http://yoursite.com/2019/02/13/简单理解正向代理，反向代理与负载均衡/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goog">
+<meta property="og:description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.postimg.cc/Gp65YCPC/3.png">
-<meta property="og:updated_time" content="2019-02-13T03:11:42.481Z">
+<meta property="og:updated_time" content="2019-02-13T03:40:36.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简单理解正向代理，反向代理与负载均衡">
-<meta name="twitter:description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goog">
+<meta name="twitter:description" content="正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Goo">
 <meta name="twitter:image" content="https://i.postimg.cc/Gp65YCPC/3.png">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
@@ -181,7 +181,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。<br><a href="https://postimg.cc/wtc28nbf" target="_blank" rel="noopener"><img src="https://i.postimg.cc/Gp65YCPC/3.png" alt="正向代理与反向代理"></a><br>正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。<br>而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Google官网的时候，代理服务器请将我们的请求转发到某一台服务器上，此时的代理就是反向代理。<br>负载均衡的主要目标就是将请求分发到几台服务器上来环境单台服务器的压力，提高服务质量。反向代理是实现负载均衡的实现手段，但反向代理的作用又不仅限于负载均衡。</p>
+        <blockquote>
+<p>正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。<br><a href="https://postimg.cc/wtc28nbf" target="_blank" rel="noopener"><img src="https://i.postimg.cc/Gp65YCPC/3.png" alt="正向代理与反向代理"></a><br>正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。<br>而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Google官网的时候，代理服务器请将我们的请求转发到某一台服务器上，此时的代理就是反向代理。<br>负载均衡的主要目标就是将请求分发到几台服务器上来环境单台服务器的压力，提高服务质量。反向代理是实现负载均衡的实现手段，但反向代理的作用又不仅限于负载均衡。</p>
+</blockquote>
 
       
 
@@ -216,7 +218,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">正向代理 反向代理 负载均衡</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-正向代理 -反向代理 -负载均衡</a>
         		</li>
       		
 		</ul>
@@ -414,7 +416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正向代理 反向代理 负载均衡</a>
+                <a href="javascript:void(0)" class="js-tag color1">-TODO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">-正向代理 -反向代理 -负载均衡</a>
               </li>
             
             <div class="clearfix"></div>

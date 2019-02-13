@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-13T03:11:42.481Z</updated>
+  <updated>2019-02-13T03:40:36.213Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,21 +21,22 @@
     <link href="http://yoursite.com/2019/02/13/%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%EF%BC%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E4%B8%8E%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     <id>http://yoursite.com/2019/02/13/简单理解正向代理，反向代理与负载均衡/</id>
     <published>2019-02-13T03:08:00.000Z</published>
-    <updated>2019-02-13T03:11:42.481Z</updated>
+    <updated>2019-02-13T03:40:36.213Z</updated>
     
-    <content type="html"><![CDATA[<p>正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。<br><a href="https://postimg.cc/wtc28nbf" target="_blank" rel="noopener"><img src="https://i.postimg.cc/Gp65YCPC/3.png" alt="正向代理与反向代理"></a><br>正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。<br>而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Google官网的时候，代理服务器请将我们的请求转发到某一台服务器上，此时的代理就是反向代理。<br>负载均衡的主要目标就是将请求分发到几台服务器上来环境单台服务器的压力，提高服务质量。反向代理是实现负载均衡的实现手段，但反向代理的作用又不仅限于负载均衡。</p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。<br><a href="https://postimg.cc/wtc28nbf" target="_blank" rel="noopener"><img src="https://i.postimg.cc/Gp65YCPC/3.png" alt="正向代理与反向代理"></a><br>正向代理常见的应用例如，VPN。如果在国内是没有办法直接访问Google，Youtube等网站。那我们就可以在国外买一台服务器搭一个VPN，然后通过该服务器访问国外的网站。这台VPN服务器充当的就是正向代理的角色。<br>而反向代理通常对开发来说更熟悉一些。Google的服务器可能有成千上万台，当我们访问Google官网的时候，代理服务器请将我们的请求转发到某一台服务器上，此时的代理就是反向代理。<br>负载均衡的主要目标就是将请求分发到几台服务器上来环境单台服务器的压力，提高服务质量。反向代理是实现负载均衡的实现手段，但反向代理的作用又不仅限于负载均衡。</p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。&lt;br&gt;&lt;a href=&quot;https://postimg.cc/wtc28nbf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https:/
+        &lt;blockquote&gt;
+&lt;p&gt;正向代理与反向代理是相对的一组概念，简单来说，正向代理隐藏了客户端，而反向代理则隐藏了服务端。&lt;br&gt;&lt;a href=&quot;https://postimg.cc/wtc28nbf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img
       
     
     </summary>
     
     
-      <category term="正向代理 反向代理 负载均衡" scheme="http://yoursite.com/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+      <category term="-正向代理 -反向代理 -负载均衡" scheme="http://yoursite.com/tags/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86-%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     
   </entry>
   
@@ -44,12 +45,23 @@
     <link href="http://yoursite.com/2019/02/12/2019-s-todo-list/"/>
     <id>http://yoursite.com/2019/02/12/2019-s-todo-list/</id>
     <published>2019-02-12T07:01:49.000Z</published>
-    <updated>2019-02-12T07:13:19.870Z</updated>
+    <updated>2019-02-13T03:55:29.269Z</updated>
+    
+    <content type="html"><![CDATA[<p>##分布式系统</p><p>####接入层<br>    -负载均衡<br>    -流量控制<br>    -降级<br>    -熔断<br>    -防雪崩<br>    -…</p><p>####逻辑层<br>    -可扩展 (水平/垂直)<br>    -隔离<br>    -解耦<br>    -RPC (dubbo/thrift/grpc)<br>    -连接池<br>    -消息队列 (RocketMQ/RabbitMQ/Kafka/ZeroMQ/redis)<br>    -延迟加载<br>    -数据预读<br>    -轮询通知<br>    -事件系统<br>    -模块化</p><p>####数据层<br>    -缓存 (缓存穿透/缓存雪崩/缓存击穿)<br>    -一致性(CAP/分布式锁/一致性算法/幂等)<br>    -主从架构<br>    -去中心化架构<br>    -唯一ID生成<br>    -一致性Hash<br>    -数据库扩展</p><p>####服务发现<br>    -服务注册与发现 (名字服务)<br>    -服务路由<br>    -服务网关<br>    -配置中心</p><p>####其他<br>    -监控系统<br>    -日志系统<br>    -测试<br>    -平滑启动<br>    -异地多活<br>    -docker</p><p><strong>待续…</strong></p>]]></content>
     
     <summary type="html">
     
+      
+      
+        &lt;p&gt;##分布式系统&lt;/p&gt;
+&lt;p&gt;####接入层&lt;br&gt;    -负载均衡&lt;br&gt;    -流量控制&lt;br&gt;    -降级&lt;br&gt;    -熔断&lt;br&gt;    -防雪崩&lt;br&gt;    -…&lt;/p&gt;
+&lt;p&gt;####逻辑层&lt;br&gt;    -可扩展 (水平/垂直)&lt;br&gt;    -隔
+      
+    
     </summary>
     
+    
+      <category term="-TODO" scheme="http://yoursite.com/tags/TODO/"/>
     
   </entry>
   
