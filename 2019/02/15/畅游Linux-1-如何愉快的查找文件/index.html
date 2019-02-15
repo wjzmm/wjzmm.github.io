@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>畅游Linux(1)-如何愉快的查找文件 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mount">
+  <meta name="description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;  其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mou">
 <meta name="keywords" content="Linux,查找,经验总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="畅游Linux(1)-如何愉快的查找文件">
 <meta property="og:url" content="http://yoursite.com/2019/02/15/畅游Linux-1-如何愉快的查找文件/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mount">
+<meta property="og:description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;  其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mou">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-15T08:55:09.530Z">
+<meta property="og:updated_time" content="2019-02-15T08:57:31.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="畅游Linux(1)-如何愉快的查找文件">
-<meta name="twitter:description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mount">
+<meta name="twitter:description" content="1.find命令Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：  find path -option [ -print ] [ -exec -ok command] {}\;  其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：  -mou">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -62,7 +62,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/经验总结/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -136,7 +136,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/tags/经验总结/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,7 +173,9 @@
       
         <h3 id="1-find命令"><a href="#1-find命令" class="headerlink" title="1.find命令"></a>1.find命令</h3><p>Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：</p>
 <blockquote>
-<p>find path -option [ -print ] [ -exec -ok command] {}\;<br>其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认<br>常用的option命令有：</p>
+<p>find path -option [ -print ] [ -exec -ok command] {}\;</p>
+</blockquote>
+<p>其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认<br>常用的option命令有：</p>
 <ol>
 <li>-mount, -xdev : 只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件。</li>
 <li>-amin n : 在过去n分钟内被读取过。</li>
@@ -194,7 +196,6 @@
 <li>-user : 查找某些用户的文件</li>
 <li>-group : 查找某些用户组的文件</li>
 </ol>
-</blockquote>
 <p>下面找几个典型的使用find查找的例子：</p>
 <ol>
 <li>查找目录下所有扩展名为cpp的文件：<blockquote>
