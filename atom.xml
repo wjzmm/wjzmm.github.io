@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-16T09:08:18.340Z</updated>
+  <updated>2019-02-22T09:29:42.394Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,54 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>畅游Linux(2)-如何愉快的处理文件</title>
+    <link href="http://yoursite.com/2019/02/22/%E7%95%85%E6%B8%B8Linux-2-%E5%A6%82%E4%BD%95%E6%84%89%E5%BF%AB%E7%9A%84%E5%A4%84%E7%90%86%E6%96%87%E6%9C%AC/"/>
+    <id>http://yoursite.com/2019/02/22/畅游Linux-2-如何愉快的处理文本/</id>
+    <published>2019-02-22T09:17:34.000Z</published>
+    <updated>2019-02-22T09:29:42.394Z</updated>
+    
+    <content type="html"><![CDATA[<h3>1.grep命令</h3><p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p><blockquote><p>grep [option] pattern filegrep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p></blockquote><ol><li>-c 只打印匹配的文本行数，不显示内容。</li><li>-i 匹配时忽略大小写。</li><li>-h 当搜索多个文件时，不显示匹配文件前缀名。</li><li>-n 列出所有匹配的行，并显示行号。</li><li>-l 只列出含有匹配行的文件的文件名，不显示匹配内容。</li><li>-v 只显示不匹配的文本行。</li><li>-w 匹配整个单词。</li><li>-x 匹配整个文本行。</li><li>-r 递归搜索，搜索当前目录和子目录。</li><li>-E 支持扩展正则表达式。</li></ol><p>下面找几个典型的使用locate查找的例子：</p><ol><li>在多个文件之间查询，查询时忽略大小写</li></ol><blockquote><p>grep -i &quot;hello world&quot; a.txt b.txt</p></blockquote><ol start="2"><li>将/etc/passwd中含有root的行打印出来，并展示行号</li></ol><blockquote><p>grep -n root /etc/passwd</p></blockquote><ol start="3"><li>将/etc/passwd中不含root的行提取戳来</li></ol><blockquote><p>grep -v root /etc/passwd</p></blockquote><ol start="4"><li>将/etc/passwd中不含root和admin的行提取出来</li></ol><blockquote><p>grep -v root /etc/passwd | grep -v admin</p></blockquote><ol start="5"><li>递归查找/etc下含有root的文件并展示行号</li></ol><blockquote><p>grep -rn root /etc要查找的字符串还可以使用通配符，例如：</p></blockquote><ol start="6"><li>查找/etc/passwd 中以r开头的行并打印</li></ol><blockquote><p>grep -n &quot;^r&quot; /etc/passwd</p></blockquote><ol start="7"><li>查找/etc/passwd中包含oo或者et的行</li></ol><blockquote><p>grep -n &quot;oo|et&quot; /etc/passwd此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p></blockquote><ol start="9"><li>查看系统是否含有game相关的进程</li></ol><blockquote><p>ps -ef | grep game</p></blockquote><ol start="10"><li>查看3333端口是否被监听</li></ol><blockquote><p>netstat -an | grep 3333</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;1.grep命令&lt;/h3&gt;
+&lt;p&gt;grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;grep [option] pattern file
+g
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+      <category term="经验总结" scheme="http://yoursite.com/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/"/>
+    
+      <category term="文件处理" scheme="http://yoursite.com/tags/%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>畅游Linux(1)-如何愉快的查找文件</title>
     <link href="http://yoursite.com/2019/02/15/%E7%95%85%E6%B8%B8Linux-1-%E5%A6%82%E4%BD%95%E6%84%89%E5%BF%AB%E7%9A%84%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6/"/>
     <id>http://yoursite.com/2019/02/15/畅游Linux-1-如何愉快的查找文件/</id>
     <published>2019-02-15T07:45:34.000Z</published>
     <updated>2019-02-16T09:08:18.340Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-find命令"><a href="#1-find命令" class="headerlink" title="1.find命令"></a>1.find命令</h3><p>Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：</p><blockquote><p>find path -option [ -print ] [ -exec -ok command] {}\;<br>其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认<br>常用的option命令有：</p><ol><li>-mount, -xdev : 只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件。</li><li>-amin n : 在过去n分钟内被读取过。</li><li>-anewer file : 比文件file更晚被读取过的文件。</li><li>-atime n : 在过去n天内被读取过的文件。</li><li>-cmin n : 在过去n分钟内被修改过。</li><li>-cnewer file :比文件file更新的文件。</li><li>-ctime n : 在过去n天内被修改过的文件。</li><li>-empty : 空的文件。</li><li>-gid n or -group name :gid是n或是group名称是name。</li><li>-ipath p, -path p : 路径名称符合p的文件ipath会忽略大小写。</li><li>-name name, -iname name : 文件名称符合name的文件。iname会忽略大小写。</li><li>-size n : 文件大小 是n单位，b 代表512位元组的区块，c表示字元数，k表示kilo bytes，w是二个位元组。</li><li>-pid n : process id是n的文件</li><li>-type c : 文件类型是c的文件。(type后面跟的类型还可以是，d:目录，c: 字型装置文件，b: 区块装置文件，p: 具名贮列，f: 一般文件，l: 符号连结，s: socket)</li><li>-perm n : 按照文件权限查找，例如-perm 655</li><li>-prune : 查找时排除某些目录</li><li>-user : 查找某些用户的文件</li><li>-group : 查找某些用户组的文件</li></ol></blockquote><p>下面找几个典型的使用find查找的例子：</p><ol><li>查找目录下所有扩展名为cpp的文件：<blockquote><p>find . -name “*.cpp”</p></blockquote></li><li>查找目录及其子目录下所有最近20天内更新过的文件：<blockquote><p>find . -ctime -20</p></blockquote></li><li>查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问：<blockquote><p>find /var/log -type f -mtime +7 -ok rm {} \</p></blockquote></li><li>查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件：<blockquote><p>find . -type f -perm 644 -exec ls -l {} \</p></blockquote></li><li>为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：<blockquote><p>find / -type f -size 0 -exec ls -l {} \</p></blockquote></li><li>在当前目录下查找长度超过10块的文件(一块等于512字节):<blockquote><p>find . -size +10</p></blockquote></li><li>在/apps目录下查找文件，忽略/apps/bin目录(需要注意的是，此处的-o为表达式，当-o前面的语句生效时不执行-o后面的语句)：<blockquote><p>find /apps -name “target” -prune -o -print</p></blockquote></li></ol><h3 id="2-locate命令"><a href="#2-locate命令" class="headerlink" title="2.locate命令"></a>2.locate命令</h3><p>locate命令作用上类似于find -name，使用一般格式如下：</p><blockquote><p>Locate [选择参数] [样式]<br>locate实现方式是在系统中维护一个所有文件及其所在路径的数据库。查找的时候直接在DB中进行查找，所以查找速度非常快，但是缺点也很明显，查找结果比较依赖于数据库的更新速度。如果文件是最近刚建立，在DB没有更新的情况下可能locate查找失败。<br>locate使用的索引数据库一般放在crontab中定时更新，也可以使用updatedb手动更新索引数据库。locate常用的参数有：</p><ol><li>-e 将排除在寻找的范围之外。</li><li>-f 将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案 放在资料库中。</li><li>-q 安静模式，不会显示任何错误讯息。</li><li>-n 至多显示 n个输出。</li><li>-r 使用正规运算式 做寻找的条件。</li><li>-o 指定资料库存的名称。 </li><li>-d 指定资料库的路径</li></ol></blockquote><p>下面找几个典型的使用locate查找的例子：</p><ol><li>忽略大小写查找当前目录下D开头的文件：<blockquote><p>locate -i ./d</p></blockquote></li><li>2.查找/etc目录下以m开头的文件： <blockquote><p>locate /etc/m</p></blockquote></li></ol><h3 id="3-whereis命令"><a href="#3-whereis命令" class="headerlink" title="3.whereis命令"></a>3.whereis命令</h3><p>whereis命令类似于locate，不同之处在于，whereis一般只用于二进制文件(-b)，man帮助文件(-m)以及源码文件(-s)的查找。<br>whereis命令的有点与缺点类似，唯一的区别是whereis一般不支持模糊查找,而locate是可以支持模糊查找的。</p><h3 id="4-which命令"><a href="#4-which命令" class="headerlink" title="4.which命令"></a>4.which命令</h3><p>which命令用于命令的查找，查找路径是系统的PATH目录：</p><blockquote><p>Locate 可执行文件名<br>which 使用的参数有：</p><ol><li>-n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</li><li>-p 与-n参数相同，但此处的包括了文件的路径。</li><li>-w 指定输出时栏位的宽度。</li></ol></blockquote><p>例如要查找ls命令，可以使用</p><blockquote><p>which ls</p></blockquote>]]></content>
+    <content type="html"><![CDATA[<h3>1.find命令</h3><p>Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：</p><blockquote><p>find path -option [ -print ] [ -exec -ok command] {};其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认常用的option命令有：</p></blockquote><ol><li>-mount, -xdev : 只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件。</li><li>-amin n : 在过去n分钟内被读取过。</li><li>-anewer file : 比文件file更晚被读取过的文件。</li><li>-atime n : 在过去n天内被读取过的文件。</li><li>-cmin n : 在过去n分钟内被修改过。</li><li>-cnewer file :比文件file更新的文件。</li><li>-ctime n : 在过去n天内被修改过的文件。</li><li>-empty : 空的文件。</li><li>-gid n or -group name :gid是n或是group名称是name。</li><li>-ipath p, -path p : 路径名称符合p的文件ipath会忽略大小写。</li><li>-name name, -iname name : 文件名称符合name的文件。iname会忽略大小写。</li><li>-size n : 文件大小 是n单位，b 代表512位元组的区块，c表示字元数，k表示kilo bytes，w是二个位元组。</li><li>-pid n : process id是n的文件</li><li>-type c : 文件类型是c的文件。(type后面跟的类型还可以是，d:目录，c: 字型装置文件，b: 区块装置文件，p: 具名贮列，f: 一般文件，l: 符号连结，s: socket)</li><li>-perm n : 按照文件权限查找，例如-perm 655</li><li>-prune : 查找时排除某些目录</li><li>-user : 查找某些用户的文件</li><li>-group : 查找某些用户组的文件</li></ol><p>下面找几个典型的使用find查找的例子：</p><ol><li>查找目录下所有扩展名为cpp的文件：</li></ol><blockquote><p>find . -name &quot;*.cpp&quot;</p></blockquote><ol start="2"><li>查找目录及其子目录下所有最近20天内更新过的文件：</li></ol><blockquote><p>find . -ctime -20</p></blockquote><ol start="3"><li>查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问：</li></ol><blockquote><p>find /var/log -type f -mtime +7 -ok rm {} \</p></blockquote><ol start="4"><li>查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件：</li></ol><blockquote><p>find . -type f -perm 644 -exec ls -l {} \</p></blockquote><ol start="5"><li>为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：</li></ol><blockquote><p>find / -type f -size 0 -exec ls -l {} \</p></blockquote><ol start="6"><li>在当前目录下查找长度超过10块的文件(一块等于512字节):</li></ol><blockquote><p>find . -size +10</p></blockquote><ol start="7"><li>在/apps目录下查找文件，忽略/apps/bin目录(需要注意的是，此处的-o为表达式，当-o前面的语句生效时不执行-o后面的语句)：</li></ol><blockquote><p>find /apps -name &quot;target&quot; -prune -o -print</p></blockquote><h3>2.locate命令</h3><p>locate命令作用上类似于find -name，使用一般格式如下：</p><blockquote><p>Locate [选择参数] [样式]locate实现方式是在系统中维护一个所有文件及其所在路径的数据库。查找的时候直接在DB中进行查找，所以查找速度非常快，但是缺点也很明显，查找结果比较依赖于数据库的更新速度。如果文件是最近刚建立，在DB没有更新的情况下可能locate查找失败。locate使用的索引数据库一般放在crontab中定时更新，也可以使用updatedb手动更新索引数据库。locate常用的参数有：</p></blockquote><ol><li>-e 将排除在寻找的范围之外。</li><li>-f 将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案 放在资料库中。</li><li>-q 安静模式，不会显示任何错误讯息。</li><li>-n 至多显示 n个输出。</li><li>-r 使用正规运算式 做寻找的条件。</li><li>-o 指定资料库存的名称。</li><li>-d 指定资料库的路径</li></ol><p>下面找几个典型的使用locate查找的例子：</p><ol><li>忽略大小写查找当前目录下D开头的文件：</li></ol><blockquote><p>locate -i ./d</p></blockquote><ol start="2"><li>2.查找/etc目录下以m开头的文件：</li></ol><blockquote><p>locate /etc/m</p></blockquote><h3>3.whereis命令</h3><p>whereis命令类似于locate，不同之处在于，whereis一般只用于二进制文件(-b)，man帮助文件(-m)以及源码文件(-s)的查找。whereis命令的有点与缺点类似，唯一的区别是whereis一般不支持模糊查找,而locate是可以支持模糊查找的。</p><h3>4.which命令</h3><p>which命令用于命令的查找，查找路径是系统的PATH目录：</p><blockquote><p>Locate 可执行文件名which 使用的参数有：</p></blockquote><ol><li>-n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</li><li>-p 与-n参数相同，但此处的包括了文件的路径。</li><li>-w 指定输出时栏位的宽度。</li></ol><p>例如要查找ls命令，可以使用</p><blockquote><p>which ls</p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;1-find命令&quot;&gt;&lt;a href=&quot;#1-find命令&quot; class=&quot;headerlink&quot; title=&quot;1.find命令&quot;&gt;&lt;/a&gt;1.find命令&lt;/h3&gt;&lt;p&gt;Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：&lt;/p&gt;
-
+        &lt;h3&gt;1.find命令&lt;/h3&gt;
+&lt;p&gt;Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;find path -option [ -print ] [ -exec -ok command] {};
+其中，
       
     
     </summary>
@@ -77,15 +111,28 @@
     <link href="http://yoursite.com/2019/02/12/2019-s-todo-list/"/>
     <id>http://yoursite.com/2019/02/12/2019-s-todo-list/</id>
     <published>2019-02-12T07:01:49.000Z</published>
-    <updated>2019-02-13T06:54:29.715Z</updated>
+    <updated>2019-02-22T09:32:27.479Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><h4 id="接入层"><a href="#接入层" class="headerlink" title="接入层"></a>接入层</h4><pre><code>- 负载均衡- 流量控制- 降级- 熔断- 防雪崩- ...</code></pre><h4 id="逻辑层"><a href="#逻辑层" class="headerlink" title="逻辑层"></a>逻辑层</h4><pre><code>- 可扩展 (水平/垂直)- 隔离- 解耦- RPC (dubbo/thrift/grpc)- 连接池- 消息队列 (RocketMQ/RabbitMQ/Kafka/ZeroMQ/redis)- 延迟加载- 数据预读- 轮询通知- 事件系统- 模块化</code></pre><h4 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h4><pre><code>- 缓存 (缓存穿透/缓存雪崩/缓存击穿)- 一致性(CAP/分布式锁/一致性算法/幂等)- 主从架构- 去中心化架构- 唯一ID生成- 一致性Hash- 数据库扩展</code></pre><h4 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h4><pre><code>- 服务注册与发现 (名字服务)- 服务路由- 服务网关- 配置中心</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><pre><code>- 监控系统- 日志系统- 测试- 平滑启动- 异地多活- docker**待续...**</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2>分布式系统</h2><h4>接入层</h4><pre><code>- 负载均衡- 流量控制- 降级- 熔断- 防雪崩- ...</code></pre><h4>逻辑层</h4><pre><code>- 可扩展 (水平/垂直)- 隔离- 解耦- RPC (dubbo/thrift/grpc)- 连接池- 消息队列 (RocketMQ/RabbitMQ/Kafka/ZeroMQ/redis)- 延迟加载- 数据预读- 轮询通知- 事件系统- 模块化</code></pre><h4>数据层</h4><pre><code>- 缓存 (缓存穿透/缓存雪崩/缓存击穿)- 一致性(CAP/分布式锁/一致性算法/幂等)- 主从架构- 去中心化架构- 唯一ID生成- 一致性Hash- 数据库扩展</code></pre><h4>服务发现</h4><pre><code>- 服务注册与发现 (名字服务)- 服务路由- 服务网关- 配置中心</code></pre><h4>其他</h4><pre><code>- 监控系统- 日志系统- 测试- 平滑启动- 异地多活- docker</code></pre><h2>数据结构相关</h2><h4>树</h4><pre><code>- 二叉树- 红黑树- 平衡二叉树- B-树- B+树</code></pre><h4>排序算法</h4><pre><code>- 快排- 冒泡- 交换- 桶- 堆...**待续...**</code></pre>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;分布式系统&quot;&gt;&lt;a href=&quot;#分布式系统&quot; class=&quot;headerlink&quot; title=&quot;分布式系统&quot;&gt;&lt;/a&gt;分布式系统&lt;/h2&gt;&lt;h4 id=&quot;接入层&quot;&gt;&lt;a href=&quot;#接入层&quot; class=&quot;headerlink&quot; title=&quot;接入层&quot;&gt;&lt;/
+        &lt;h2&gt;分布式系统&lt;/h2&gt;
+&lt;h4&gt;接入层&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;- 负载均衡
+- 流量控制
+- 降级
+- 熔断
+- 防雪崩
+- ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;逻辑层&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;- 可扩展 (水平/垂直)
+- 隔离
+- 解耦
+- R
       
     
     </summary>

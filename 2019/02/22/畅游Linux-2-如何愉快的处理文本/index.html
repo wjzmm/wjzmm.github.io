@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 反向代理 | 404Found</title>
+  <title>畅游Linux(2)-如何愉快的处理文件 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学着写点东西，现在不开始就永远不会不是么。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="404Found">
-<meta property="og:url" content="http://yoursite.com/tags/反向代理/index.html">
+  <meta name="description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
+<meta name="keywords" content="Linux,经验总结,文件处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="畅游Linux(2)-如何愉快的处理文件">
+<meta property="og:url" content="http://yoursite.com/2019/02/22/畅游Linux-2-如何愉快的处理文本/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="学着写点东西，现在不开始就永远不会不是么。">
+<meta property="og:description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-22T09:29:42.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404Found">
-<meta name="twitter:description" content="学着写点东西，现在不开始就永远不会不是么。">
+<meta name="twitter:title" content="畅游Linux(2)-如何愉快的处理文件">
+<meta name="twitter:description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -155,68 +157,228 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-畅游Linux-2-如何愉快的处理文本" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/13/简单理解正向代理，反向代理与负载均衡/" class="archive-article-date">
-  	<time datetime="2019-02-13T03:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-13</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/13/简单理解正向代理，反向代理与负载均衡/">简单理解正向代理，反向代理与负载均衡</a>
+    <h1 class="article-title" itemprop="name">
+      畅游Linux(2)-如何愉快的处理文件
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/02/22/畅游Linux-2-如何愉快的处理文本/" class="archive-article-date">
+  	<time datetime="2019-02-22T09:17:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>1.grep命令</h3>
+<p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p>
+<blockquote>
+<p>grep [option] pattern file
+grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p>
+</blockquote>
+<ol>
+<li>-c 只打印匹配的文本行数，不显示内容。</li>
+<li>-i 匹配时忽略大小写。</li>
+<li>-h 当搜索多个文件时，不显示匹配文件前缀名。</li>
+<li>-n 列出所有匹配的行，并显示行号。</li>
+<li>-l 只列出含有匹配行的文件的文件名，不显示匹配内容。</li>
+<li>-v 只显示不匹配的文本行。</li>
+<li>-w 匹配整个单词。</li>
+<li>-x 匹配整个文本行。</li>
+<li>-r 递归搜索，搜索当前目录和子目录。</li>
+<li>-E 支持扩展正则表达式。</li>
+</ol>
+<p>下面找几个典型的使用locate查找的例子：</p>
+<ol>
+<li>在多个文件之间查询，查询时忽略大小写</li>
+</ol>
+<blockquote>
+<p>grep -i &quot;hello world&quot; a.txt b.txt</p>
+</blockquote>
+<ol start="2">
+<li>将/etc/passwd中含有root的行打印出来，并展示行号</li>
+</ol>
+<blockquote>
+<p>grep -n root /etc/passwd</p>
+</blockquote>
+<ol start="3">
+<li>将/etc/passwd中不含root的行提取戳来</li>
+</ol>
+<blockquote>
+<p>grep -v root /etc/passwd</p>
+</blockquote>
+<ol start="4">
+<li>将/etc/passwd中不含root和admin的行提取出来</li>
+</ol>
+<blockquote>
+<p>grep -v root /etc/passwd | grep -v admin</p>
+</blockquote>
+<ol start="5">
+<li>递归查找/etc下含有root的文件并展示行号</li>
+</ol>
+<blockquote>
+<p>grep -rn root /etc
+要查找的字符串还可以使用通配符，例如：</p>
+</blockquote>
+<ol start="6">
+<li>查找/etc/passwd 中以r开头的行并打印</li>
+</ol>
+<blockquote>
+<p>grep -n &quot;^r&quot; /etc/passwd</p>
+</blockquote>
+<ol start="7">
+<li>查找/etc/passwd中包含oo或者et的行</li>
+</ol>
+<blockquote>
+<p>grep -n &quot;oo|et&quot; /etc/passwd
+此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p>
+</blockquote>
+<ol start="9">
+<li>查看系统是否含有game相关的进程</li>
+</ol>
+<blockquote>
+<p>ps -ef | grep game</p>
+</blockquote>
+<ol start="10">
+<li>查看3333端口是否被监听</li>
+</ol>
+<blockquote>
+<p>netstat -an | grep 3333</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">正向代理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">反向代理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">负载均衡</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件处理</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/22/畅游Linux-2-如何愉快的处理文本/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/02/15/畅游Linux-1-如何愉快的查找文件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">畅游Linux(1)-如何愉快的查找文件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -239,9 +401,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
