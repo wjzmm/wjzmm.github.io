@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-22T09:29:42.394Z</updated>
+  <updated>2019-02-27T06:56:45.922Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>必知必会的面试题集合</title>
+    <link href="http://yoursite.com/2019/02/27/%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9B%86%E5%90%88/"/>
+    <id>http://yoursite.com/2019/02/27/必知必会的面试题集合/</id>
+    <published>2019-02-27T06:13:47.000Z</published>
+    <updated>2019-02-27T06:56:45.922Z</updated>
+    
+    <content type="html"><![CDATA[<h3>1. 网络服务如何保证幂等性？</h3><p>幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成功的提醒。此时如果用户再次点击支付，将进行二次扣款，这样就会导致用户的钱被扣了两次，造成错误。我们的服务有很多操作是天然实现幂等性的，比如查询接口。但对于增加，更新，删除等，如何保证幂等性呢？</p><h5>(1). 全局唯一的ID</h5><p>对于业务的每一次操作都生成一个全局ID，在执行操作前先检查该ID是否已执行过该操作。如果没有则把ID存储，正常执行该操作，如果已存在则表明该操作已经执行。订单支付这个场景就可以使用订单ID作为全局的ID，用于保证服务的幂等性。</p><h5>(2). 去重表</h5><p>利用数据库表的特性来实现幂等性，常用思路是在表上构建一个唯一索引，保证一旦一个操作执行完毕后，后续的操作进行相同的插入操作时没有办法写入成功。例如要防止重复点赞，可以设计一个表，将被点赞内容ID和用户ID建立唯一索引，用户每次点赞就往表中写入一条数据，这样重复点赞的记录没有办法写入，就能实现点赞的幂等性。</p><h5>(3). MVCC方案</h5><p>多版本控制，该策略主要使用update with condition来保证多次外部请求调用对于系统的影响是一致的。在系统设计时，合理使用乐观锁，通过版本号来做乐观锁的判断条件，这样即使在并发的情况下，系统也不会有太大的问题。例如：</p><blockquote><p>select * from tablename where condition=#condition# //取出要跟新的对象，带有版本versoinupdate tableName set name=#name#,version=version+1 where version=#version#</p></blockquote><h5>(4). 状态机</h5><p>这种方法适合在有状态机流转的情况下，比如就会订单的创建和付款，订单的付款肯定是在之前，这时我们可以通过在设计状态字段时，使用int类型，并且通过值类型的大小来做幂等，比如订单的创建为0，付款成功为100,付款失败为99。</p><blockquote><p>update <code>order</code> set status=#{status} where id=#{id} and status&lt;#{status}</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3&gt;1. 网络服务如何保证幂等性？&lt;/h3&gt;
+&lt;p&gt;幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是
+      
+    
+    </summary>
+    
+    
+      <category term="面试题" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+      <category term="后台开发" scheme="http://yoursite.com/tags/%E5%90%8E%E5%8F%B0%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>畅游Linux(2)-如何愉快的处理文件</title>
