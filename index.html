@@ -177,28 +177,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>1. 网络服务如何保证幂等性？</h3>
-<p>幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。
-幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成功的提醒。此时如果用户再次点击支付，将进行二次扣款，这样就会导致用户的钱被扣了两次，造成错误。
-我们的服务有很多操作是天然实现幂等性的，比如查询接口。但对于增加，更新，删除等，如何保证幂等性呢？</p>
-<h5>(1). 全局唯一的ID</h5>
-<p>对于业务的每一次操作都生成一个全局ID，在执行操作前先检查该ID是否已执行过该操作。如果没有则把ID存储，正常执行该操作，如果已存在则表明该操作已经执行。
-订单支付这个场景就可以使用订单ID作为全局的ID，用于保证服务的幂等性。</p>
-<h5>(2). 去重表</h5>
-<p>利用数据库表的特性来实现幂等性，常用思路是在表上构建一个唯一索引，保证一旦一个操作执行完毕后，后续的操作进行相同的插入操作时没有办法写入成功。
-例如要防止重复点赞，可以设计一个表，将被点赞内容ID和用户ID建立唯一索引，用户每次点赞就往表中写入一条数据，这样重复点赞的记录没有办法写入，就能实现点赞的幂等性。</p>
-<h5>(3). MVCC方案</h5>
-<p>多版本控制，该策略主要使用update with condition来保证多次外部请求调用对于系统的影响是一致的。在系统设计时，合理使用乐观锁，通过版本号来做乐观锁的判断条件，这样即使在并发的情况下，系统也不会有太大的问题。例如：</p>
+        <h3 id="1-网络服务如何保证幂等性？"><a href="#1-网络服务如何保证幂等性？" class="headerlink" title="1. 网络服务如何保证幂等性？"></a>1. 网络服务如何保证幂等性？</h3><p>幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。<br>幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成功的提醒。此时如果用户再次点击支付，将进行二次扣款，这样就会导致用户的钱被扣了两次，造成错误。<br>我们的服务有很多操作是天然实现幂等性的，比如查询接口。但对于增加，更新，删除等，如何保证幂等性呢？</p>
+<h5 id="1-全局唯一的ID"><a href="#1-全局唯一的ID" class="headerlink" title="(1). 全局唯一的ID"></a>(1). 全局唯一的ID</h5><p>对于业务的每一次操作都生成一个全局ID，在执行操作前先检查该ID是否已执行过该操作。如果没有则把ID存储，正常执行该操作，如果已存在则表明该操作已经执行。<br>订单支付这个场景就可以使用订单ID作为全局的ID，用于保证服务的幂等性。</p>
+<h5 id="2-去重表"><a href="#2-去重表" class="headerlink" title="(2). 去重表"></a>(2). 去重表</h5><p>利用数据库表的特性来实现幂等性，常用思路是在表上构建一个唯一索引，保证一旦一个操作执行完毕后，后续的操作进行相同的插入操作时没有办法写入成功。<br>例如要防止重复点赞，可以设计一个表，将被点赞内容ID和用户ID建立唯一索引，用户每次点赞就往表中写入一条数据，这样重复点赞的记录没有办法写入，就能实现点赞的幂等性。</p>
+<h5 id="3-MVCC方案"><a href="#3-MVCC方案" class="headerlink" title="(3). MVCC方案"></a>(3). MVCC方案</h5><p>多版本控制，该策略主要使用update with condition来保证多次外部请求调用对于系统的影响是一致的。在系统设计时，合理使用乐观锁，通过版本号来做乐观锁的判断条件，这样即使在并发的情况下，系统也不会有太大的问题。例如：</p>
 <blockquote>
-<p>select * from tablename where condition=#condition# //取出要跟新的对象，带有版本versoin
-update tableName set name=#name#,version=version+1 where version=#version#</p>
+<p>select * from tablename where condition=#condition# //取出要跟新的对象，带有版本versoin<br>update tableName set name=#name#,version=version+1 where version=#version#</p>
 </blockquote>
-<h5>(4). 状态机</h5>
-<p>这种方法适合在有状态机流转的情况下，比如就会订单的创建和付款，订单的付款肯定是在之前，这时我们可以通过在设计状态字段时，使用int类型，并且通过值类型的大小来做幂等，比如订单的创建为0，付款成功为100,付款失败为99。</p>
+<h5 id="4-状态机"><a href="#4-状态机" class="headerlink" title="(4). 状态机"></a>(4). 状态机</h5><p>这种方法适合在有状态机流转的情况下，比如就会订单的创建和付款，订单的付款肯定是在之前，这时我们可以通过在设计状态字段时，使用int类型，并且通过值类型的大小来做幂等，比如订单的创建为0，付款成功为100,付款失败为99。</p>
 <blockquote>
 <p>update <code>order</code> set status=#{status} where id=#{id} and status&lt;#{status}</p>
 </blockquote>
-
+<h3 id="2-memcached和redis对比"><a href="#2-memcached和redis对比" class="headerlink" title="2. memcached和redis对比"></a>2. memcached和redis对比</h3><p>memcached和redis都属于内存数据库，在设计上有很多相同之处，功能和应用场合也相似。Redis与memcached最大的不同在于，redis的所有数据不都是一直在内存中。下面从功能，性能和应用场景简单分析一下memcached和redis。</p>
+<h5 id="1-性能"><a href="#1-性能" class="headerlink" title="(1). 性能"></a>(1). 性能</h5><p>redis使用单核，而memcached使用多喝，所以平均每一个核上redis在存储小数据是比memcached性能更高。但在100K以上的数据时，memcached的性能要高于redis。</p>
+<h5 id="2-功能"><a href="#2-功能" class="headerlink" title="(2). 功能"></a>(2). 功能</h5><pre><code>- memcached只支持内存的key-value存储，而redis则可以支持Strings，Lists，Sets，Sorted Set，Hash等多种类型。
+- memcached数据全放在内存中，不支持存储持久化，因此服务如果挂掉，数据不可恢复，而redis支持数据持久化，提供了snapshotting和AOF两种方式持久化数据到硬盘上，数据丢失后可以恢复。从这点上说，redis更像是一个完整的数据库系统。
+- memcached提供了cas命令，可以保证多个并发访问操作同一份数据的一致性问题。redis没有提供cas命令，但因为redis是单进程处理请求，所有的命令串行执行，所以并发情况下不需要考虑一致性问题。同时，redis也提供了事务的能力，可以保证特定操作的原子性。
+</code></pre><h5 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="(3). 应用场景"></a>(3). 应用场景</h5><pre><code>- 相对于memcached，redis的出现时间更晚且功能更完备，我们通常将其视为首选方案，但在某些特殊场景下，memcached有着显著的优势。一是对于小型静态数据的缓存处理，最具代表性的例子就是缓存HTML片段。memcached的内部内存管理机制相对redis来说更加简单，但也更有效率--这是因为memcached在处理元数据是所消耗的内存资源相对更少。作为memcached唯一支持的一种数据类型，字符串适合保存那些只需要读取的操作，因为字符串本身无需进一步的处理。二是memcached在横向扩展方面相对于redis也更有优势。由于其在设计上的思路倾向以及相对简单的功能设置，memcached在实现扩展是比redis简单的多。
+- redis几乎在缓存管理中的每一个方面都表现出优于memcached的性能。redis在排行榜，列表，消息订阅，队列等方面都有不错的应用场景，如果需要支持复杂类型，那么redis是你不二的选择（划水）。。。
+- https://blog.csdn.net/sosfnima/article/details/51993181
+- https://blog.csdn.net/u011489043/article/details/78922390
+</code></pre>
       
 
       
@@ -275,12 +274,9 @@ update tableName set name=#name#,version=version+1 where version=#version#</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>1.grep命令</h3>
-<p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p>
+        <h3 id="1-grep命令"><a href="#1-grep命令" class="headerlink" title="1.grep命令"></a>1.grep命令</h3><p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p>
 <blockquote>
-<p>grep [option] pattern file
-grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p>
-</blockquote>
+<p>grep [option] pattern file<br>grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p>
 <ol>
 <li>-c 只打印匹配的文本行数，不显示内容。</li>
 <li>-i 匹配时忽略大小写。</li>
@@ -293,63 +289,46 @@ grep命令会把查到的那一行展示出来，并不会改变被查找的文�
 <li>-r 递归搜索，搜索当前目录和子目录。</li>
 <li>-E 支持扩展正则表达式。</li>
 </ol>
+</blockquote>
 <p>下面找几个典型的使用locate查找的例子：</p>
 <ol>
-<li>在多个文件之间查询，查询时忽略大小写</li>
-</ol>
-<blockquote>
-<p>grep -i &quot;hello world&quot; a.txt b.txt</p>
+<li>在多个文件之间查询，查询时忽略大小写<blockquote>
+<p>grep -i “hello world” a.txt b.txt</p>
 </blockquote>
-<ol start="2">
-<li>将/etc/passwd中含有root的行打印出来，并展示行号</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中含有root的行打印出来，并展示行号<blockquote>
 <p>grep -n root /etc/passwd</p>
 </blockquote>
-<ol start="3">
-<li>将/etc/passwd中不含root的行提取戳来</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中不含root的行提取戳来<blockquote>
 <p>grep -v root /etc/passwd</p>
 </blockquote>
-<ol start="4">
-<li>将/etc/passwd中不含root和admin的行提取出来</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中不含root和admin的行提取出来<blockquote>
 <p>grep -v root /etc/passwd | grep -v admin</p>
 </blockquote>
-<ol start="5">
-<li>递归查找/etc下含有root的文件并展示行号</li>
-</ol>
-<blockquote>
-<p>grep -rn root /etc
-要查找的字符串还可以使用通配符，例如：</p>
+</li>
+<li>递归查找/etc下含有root的文件并展示行号<blockquote>
+<p>grep -rn root /etc<br>要查找的字符串还可以使用通配符，例如：</p>
 </blockquote>
-<ol start="6">
-<li>查找/etc/passwd 中以r开头的行并打印</li>
-</ol>
-<blockquote>
-<p>grep -n &quot;^r&quot; /etc/passwd</p>
+</li>
+<li>查找/etc/passwd 中以r开头的行并打印<blockquote>
+<p>grep -n “^r” /etc/passwd</p>
 </blockquote>
-<ol start="7">
-<li>查找/etc/passwd中包含oo或者et的行</li>
-</ol>
-<blockquote>
-<p>grep -n &quot;oo|et&quot; /etc/passwd
-此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p>
+</li>
+<li>查找/etc/passwd中包含oo或者et的行<blockquote>
+<p>grep -n “oo|et” /etc/passwd<br>此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p>
 </blockquote>
-<ol start="9">
-<li>查看系统是否含有game相关的进程</li>
-</ol>
-<blockquote>
+</li>
+<li>查看系统是否含有game相关的进程<blockquote>
 <p>ps -ef | grep game</p>
 </blockquote>
-<ol start="10">
-<li>查看3333端口是否被监听</li>
-</ol>
-<blockquote>
+</li>
+<li>查看3333端口是否被监听<blockquote>
 <p>netstat -an | grep 3333</p>
 </blockquote>
+</li>
+</ol>
 
       
 
@@ -431,13 +410,9 @@ grep命令会把查到的那一行展示出来，并不会改变被查找的文�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>1.find命令</h3>
-<p>Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：</p>
+        <h3 id="1-find命令"><a href="#1-find命令" class="headerlink" title="1.find命令"></a>1.find命令</h3><p>Linux 中find命令常用来在某个目录下查找目录或者文件，其使用语法规则如下：</p>
 <blockquote>
-<p>find path -option [ -print ] [ -exec -ok command] {};
-其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认
-常用的option命令有：</p>
-</blockquote>
+<p>find path -option [ -print ] [ -exec -ok command] {}\;<br>其中，-print代表将找到的文件输出到标准输出；-exec和-ok作用类似，找到文件后执行某个命令。不同之处在于，-ok在执行命令之前需要用户确认<br>常用的option命令有：</p>
 <ol>
 <li>-mount, -xdev : 只检查和指定目录在同一个文件系统下的文件，避免列出其它文件系统中的文件。</li>
 <li>-amin n : 在过去n分钟内被读取过。</li>
@@ -458,92 +433,72 @@ grep命令会把查到的那一行展示出来，并不会改变被查找的文�
 <li>-user : 查找某些用户的文件</li>
 <li>-group : 查找某些用户组的文件</li>
 </ol>
+</blockquote>
 <p>下面找几个典型的使用find查找的例子：</p>
 <ol>
-<li>查找目录下所有扩展名为cpp的文件：</li>
-</ol>
-<blockquote>
-<p>find . -name &quot;*.cpp&quot;</p>
+<li>查找目录下所有扩展名为cpp的文件：<blockquote>
+<p>find . -name “*.cpp”</p>
 </blockquote>
-<ol start="2">
-<li>查找目录及其子目录下所有最近20天内更新过的文件：</li>
-</ol>
-<blockquote>
+</li>
+<li>查找目录及其子目录下所有最近20天内更新过的文件：<blockquote>
 <p>find . -ctime -20</p>
 </blockquote>
-<ol start="3">
-<li>查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问：</li>
-</ol>
-<blockquote>
+</li>
+<li>查找/var/log目录中更改时间在7日以前的普通文件，并在删除之前询问：<blockquote>
 <p>find /var/log -type f -mtime +7 -ok rm {} \</p>
 </blockquote>
-<ol start="4">
-<li>查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件：</li>
-</ol>
-<blockquote>
+</li>
+<li>查找前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件：<blockquote>
 <p>find . -type f -perm 644 -exec ls -l {} \</p>
 </blockquote>
-<ol start="5">
-<li>为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：</li>
-</ol>
-<blockquote>
+</li>
+<li>为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径：<blockquote>
 <p>find / -type f -size 0 -exec ls -l {} \</p>
 </blockquote>
-<ol start="6">
-<li>在当前目录下查找长度超过10块的文件(一块等于512字节):</li>
-</ol>
-<blockquote>
+</li>
+<li>在当前目录下查找长度超过10块的文件(一块等于512字节):<blockquote>
 <p>find . -size +10</p>
 </blockquote>
-<ol start="7">
-<li>在/apps目录下查找文件，忽略/apps/bin目录(需要注意的是，此处的-o为表达式，当-o前面的语句生效时不执行-o后面的语句)：</li>
+</li>
+<li>在/apps目录下查找文件，忽略/apps/bin目录(需要注意的是，此处的-o为表达式，当-o前面的语句生效时不执行-o后面的语句)：<blockquote>
+<p>find /apps -name “target” -prune -o -print</p>
+</blockquote>
+</li>
 </ol>
+<h3 id="2-locate命令"><a href="#2-locate命令" class="headerlink" title="2.locate命令"></a>2.locate命令</h3><p>locate命令作用上类似于find -name，使用一般格式如下：</p>
 <blockquote>
-<p>find /apps -name &quot;target&quot; -prune -o -print</p>
-</blockquote>
-<h3>2.locate命令</h3>
-<p>locate命令作用上类似于find -name，使用一般格式如下：</p>
-<blockquote>
-<p>Locate [选择参数] [样式]
-locate实现方式是在系统中维护一个所有文件及其所在路径的数据库。查找的时候直接在DB中进行查找，所以查找速度非常快，但是缺点也很明显，查找结果比较依赖于数据库的更新速度。如果文件是最近刚建立，在DB没有更新的情况下可能locate查找失败。
-locate使用的索引数据库一般放在crontab中定时更新，也可以使用updatedb手动更新索引数据库。locate常用的参数有：</p>
-</blockquote>
+<p>Locate [选择参数] [样式]<br>locate实现方式是在系统中维护一个所有文件及其所在路径的数据库。查找的时候直接在DB中进行查找，所以查找速度非常快，但是缺点也很明显，查找结果比较依赖于数据库的更新速度。如果文件是最近刚建立，在DB没有更新的情况下可能locate查找失败。<br>locate使用的索引数据库一般放在crontab中定时更新，也可以使用updatedb手动更新索引数据库。locate常用的参数有：</p>
 <ol>
 <li>-e 将排除在寻找的范围之外。</li>
 <li>-f 将特定的档案系统排除在外，例如我们没有到理要把 proc 档案系统中的档案 放在资料库中。</li>
 <li>-q 安静模式，不会显示任何错误讯息。</li>
 <li>-n 至多显示 n个输出。</li>
 <li>-r 使用正规运算式 做寻找的条件。</li>
-<li>-o 指定资料库存的名称。</li>
+<li>-o 指定资料库存的名称。 </li>
 <li>-d 指定资料库的路径</li>
 </ol>
+</blockquote>
 <p>下面找几个典型的使用locate查找的例子：</p>
 <ol>
-<li>忽略大小写查找当前目录下D开头的文件：</li>
-</ol>
-<blockquote>
+<li>忽略大小写查找当前目录下D开头的文件：<blockquote>
 <p>locate -i ./d</p>
 </blockquote>
-<ol start="2">
-<li>2.查找/etc目录下以m开头的文件：</li>
-</ol>
-<blockquote>
+</li>
+<li>2.查找/etc目录下以m开头的文件： <blockquote>
 <p>locate /etc/m</p>
 </blockquote>
-<h3>3.whereis命令</h3>
-<p>whereis命令类似于locate，不同之处在于，whereis一般只用于二进制文件(-b)，man帮助文件(-m)以及源码文件(-s)的查找。
-whereis命令的有点与缺点类似，唯一的区别是whereis一般不支持模糊查找,而locate是可以支持模糊查找的。</p>
-<h3>4.which命令</h3>
-<p>which命令用于命令的查找，查找路径是系统的PATH目录：</p>
+</li>
+</ol>
+<h3 id="3-whereis命令"><a href="#3-whereis命令" class="headerlink" title="3.whereis命令"></a>3.whereis命令</h3><p>whereis命令类似于locate，不同之处在于，whereis一般只用于二进制文件(-b)，man帮助文件(-m)以及源码文件(-s)的查找。<br>whereis命令的有点与缺点类似，唯一的区别是whereis一般不支持模糊查找,而locate是可以支持模糊查找的。</p>
+<h3 id="4-which命令"><a href="#4-which命令" class="headerlink" title="4.which命令"></a>4.which命令</h3><p>which命令用于命令的查找，查找路径是系统的PATH目录：</p>
 <blockquote>
-<p>Locate 可执行文件名
-which 使用的参数有：</p>
-</blockquote>
+<p>Locate 可执行文件名<br>which 使用的参数有：</p>
 <ol>
 <li>-n 指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</li>
 <li>-p 与-n参数相同，但此处的包括了文件的路径。</li>
 <li>-w 指定输出时栏位的宽度。</li>
 </ol>
+</blockquote>
 <p>例如要查找ls命令，可以使用</p>
 <blockquote>
 <p>which ls</p>
@@ -715,17 +670,13 @@ which 使用的参数有：</p>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2>分布式系统</h2>
-<h4>接入层</h4>
-<pre><code>- 负载均衡
+        <h2 id="分布式系统"><a href="#分布式系统" class="headerlink" title="分布式系统"></a>分布式系统</h2><h4 id="接入层"><a href="#接入层" class="headerlink" title="接入层"></a>接入层</h4><pre><code>- 负载均衡
 - 流量控制
 - 降级
 - 熔断
 - 防雪崩
 - ...
-</code></pre>
-<h4>逻辑层</h4>
-<pre><code>- 可扩展 (水平/垂直)
+</code></pre><h4 id="逻辑层"><a href="#逻辑层" class="headerlink" title="逻辑层"></a>逻辑层</h4><pre><code>- 可扩展 (水平/垂直)
 - 隔离
 - 解耦
 - RPC (dubbo/thrift/grpc)
@@ -736,40 +687,29 @@ which 使用的参数有：</p>
 - 轮询通知
 - 事件系统
 - 模块化
-</code></pre>
-<h4>数据层</h4>
-<pre><code>- 缓存 (缓存穿透/缓存雪崩/缓存击穿)
+</code></pre><h4 id="数据层"><a href="#数据层" class="headerlink" title="数据层"></a>数据层</h4><pre><code>- 缓存 (缓存穿透/缓存雪崩/缓存击穿)
 - 一致性(CAP/分布式锁/一致性算法/幂等)
 - 主从架构
 - 去中心化架构
 - 唯一ID生成
 - 一致性Hash
 - 数据库扩展
-</code></pre>
-<h4>服务发现</h4>
-<pre><code>- 服务注册与发现 (名字服务)
+</code></pre><h4 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h4><pre><code>- 服务注册与发现 (名字服务)
 - 服务路由
 - 服务网关
 - 配置中心
-</code></pre>
-<h4>其他</h4>
-<pre><code>- 监控系统
+</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><pre><code>- 监控系统
 - 日志系统
 - 测试
 - 平滑启动
 - 异地多活
 - docker
-</code></pre>
-<h2>数据结构相关</h2>
-<h4>树</h4>
-<pre><code>- 二叉树
+</code></pre><h2 id="数据结构相关"><a href="#数据结构相关" class="headerlink" title="数据结构相关"></a>数据结构相关</h2><h4 id="树"><a href="#树" class="headerlink" title="树"></a>树</h4><pre><code>- 二叉树
 - 红黑树
 - 平衡二叉树
 - B-树
 - B+树
-</code></pre>
-<h4>排序算法</h4>
-<pre><code>- 快排
+</code></pre><h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><pre><code>- 快排
 - 冒泡
 - 交换
 - 桶
@@ -778,7 +718,6 @@ which 使用的参数有：</p>
 
 **待续...**
 </code></pre>
-
       
 
       
@@ -948,6 +887,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
               </li>
              
@@ -957,10 +900,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
             
             <div class="clearfix"></div>
