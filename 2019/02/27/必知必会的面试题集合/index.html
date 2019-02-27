@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="404Found">
 <meta property="og:description" content="1. 网络服务如何保证幂等性？幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-27T07:52:04.390Z">
+<meta property="og:updated_time" content="2019-02-27T09:54:09.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="必知必会的面试题集合">
 <meta name="twitter:description" content="1. 网络服务如何保证幂等性？幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成">
@@ -197,6 +197,35 @@
 - redis几乎在缓存管理中的每一个方面都表现出优于memcached的性能。redis在排行榜，列表，消息订阅，队列等方面都有不错的应用场景，如果需要支持复杂类型，那么redis是你不二的选择（划水）。。。
 - https://blog.csdn.net/sosfnima/article/details/51993181
 - https://blog.csdn.net/u011489043/article/details/78922390
+</code></pre><h3 id="3-mysql性能优化"><a href="#3-mysql性能优化" class="headerlink" title="3. mysql性能优化"></a>3. mysql性能优化</h3><p>谈到Mysql优化，每个人收藏了很多技巧：不要使用SELECT * ，不要使用NULL字段，合理创建索引等等，问题是，你真的理解这些优化技巧背后的原理吗？</p>
+<h5 id="1-Scheme设计与数据类型优化"><a href="#1-Scheme设计与数据类型优化" class="headerlink" title="(1). Scheme设计与数据类型优化"></a>(1). Scheme设计与数据类型优化</h5><p>选择数据类型要遵循小而简单的原则，越小的数据类型通常会更快，占用更少的内存，磁盘，和CPU处理周期。例如整形比字符操作代价第，因而应该使用整型来存储IP地址，使用DATETIME来存储时间，而不是字符串。这里总结几个容易理解错误的几个技巧:</p>
+<pre><code>- 通常来说可以把为NULL的列改成NOT NULL不会对性能提升有很多帮助，只是如果计划在列上做索引，就应该将该列设置为NOT NULL。
+- 对指数类型指定宽度，比如INT(11)没有任何卵用，INT使用32位存储空间，那么他的表示范围已经确定，INT(1)和INT(20)对于存储和计算都是相同的。
+- UNSIGNED标识不允许负值，大致上可以使正整数的上线提高一倍，比如TINYINT的存储范围是-128~127，而UNSIGNED TINYINT的存储范围是0~255。
+- 通常来讲,没有太大的必要使用DECIMAL数据类型。即使需要存储财务数据时，仍然可以使用BIGINT。比如需要精确到万分之一，那么可以将数据乘以一万然后使用BIGINT存储，这样可以避免浮点数计算不准确和DECIMAL精确计算代价高的问题。
+- TIMESTAMP使用4个字节存储，DATETIMNE使用8个字节存储。因为TIMESTAMP只能表示1970-2038年，比DATETIME的表示范围小很多，而且TIMESTAMP的值因时区不同而不同。
+- 大多数情况下没有使用枚举类型的必要，其中一个缺点是枚举的字符串列表是固定的，添加和删除字符串必须使用ALTER TABLE。
+- schema的列不要太多。原因是存储引擎的API工作时需要在服务器层和存储层之间通过缓冲格式拷贝数据，然后在服务器层将缓冲数据解码成各个列，这个转换的过程代价很高。如果列太多而实际使用的列很少的话，会导致CPU占用过高。
+- 大表ALTER TABLE非常耗时，MySQL执行大部分修改结构操作的方法是用新的结构创建一个空表，然后从旧的表中查出所有数据插入到新表，然后删除旧表。尤其当内存不大而表很大，而且还有很大索引的情况下，耗时更久。
+</code></pre><h5 id="2-创建高性能索引"><a href="#2-创建高性能索引" class="headerlink" title="(2). 创建高性能索引"></a>(2). 创建高性能索引</h5><p>索引是提高MySQL查询性能的一个重要途径，但过多的索引可能会导致过高的磁盘使用率以及过高的内存占用，从而影响应用程序的整体性能。应当尽量避免事后才想起添加索引，因为事后可能需要大量的监控大量的SQL才能定位到问题所在，而且添加索引的时间肯定大于初试添加索引的时间。<br>创建索引时，应注意以下几个问题：</p>
+<pre><code>- 非独立的列无法使用索引，例如表达式，函数等等
+- 如果列很长，可以索引开始的部分字符，这样可以有效减少索引空间，提高索引效率
+- 多数情况下，多个列上创建索引不能提高查询性能。当多个索引做相交操作时，一个包含所有相关列的索引优于多个独立索引。当多个索引做联合操作时，对结果集的合并、排序等操作要消耗大量的CPU和内存资源，特别是当其中的某些索引选择性不高，需要返回合并大量数据的时候，查询成本更高，这个时候还不如走全表扫描。
+- 避免多个范围条件。
+- 覆盖索引。如果一个索引包含或者说覆盖所有需要查询的字段的值，那么就没有必要再回表查询，这就成为覆盖索引。覆盖索引是非常有用的工具，可以极大地提高性能，因为查询只需要扫描索引会带来额外的好处：索引条目小于数据行大小，如果只读取索引，极大减少数据访问量。索引是有按照列增值顺序存储的，对于IO密集型的范围查询要比随机从磁盘读取每一个的数据IO要少的多。
+- 尽量减少冗余索引，冗余索引是在相同的列上按照相同的顺序创建相同类型的索引。
+- 删除长时间未使用的索引。
+</code></pre><h5 id="3-特定类型查询优化"><a href="#3-特定类型查询优化" class="headerlink" title="(3). 特定类型查询优化"></a>(3). 特定类型查询优化</h5><pre><code>- 优化COUNT()查询。COUNT()有两种不同的作用，其一是统计某个列值的数量，其二是统计行数。统计列值时要求列值是非空的，它不会统计NULL。如果确认括号内表达式不为空时，则就是在统计行数，作用等同于COUNT(**)。这里常常会有个误解，以为COUNT(col)性能更好，但其实这个只是统计了某列非NULL的数量。如果要统计函数，直接使用COUNT(**)就好，意义清晰，且性能更好。在有些场景下业务并不需要精确的COUNT值，此时可以用EXPLAIN来获取一个近似行数。EXPLAIN不需要真正的去执行查询，所以成本非常低。
+- 优化关联查询。在大量数据的情境下，表与表之间通过一个冗余字段来关联比直接使用JOIN有更好的性能。如果确实需要使用JOIN来进行查询，则需要注意：a. 确保ON和USING的列上有索引; b. 确保任何的GROUP BY和ORDER BY中的表达式只涉及一个表中的列，这样MySQL才会有可能使用索引来优化。
+- 优化LIMIT分页。需要使用分页操作时，通常使用LIMIT加上便宜来实现，同时加上合适的ORDER BY字段。如果有对应的索引，通常效率不错，否则，MySQL需要做大量的文件排序操作。一个常见的问题是当偏移量非常大的时候，例如LIMIT 10000 20，MySQL需要查询10020条数据并将之前的10000条数据全部丢弃。优化这种查询的方法就是尽可能使用覆盖索引进行扫描，而不是查询所有的列。然后根据需要做一次查询再返回所有的列，对于便宜量非常大是，这样做的效率提升会非常大。考虑下面的例子:
+&gt;  SELECT film_id,description FROM film ORDER BY title LIMIT 50,5;
+如果这个表非常的大，那么查询改成下面这样将大幅度提升查询效率:
+&gt; SELECT film.film_id,film.description FROM film INNER JOIN (SELECT film_id FROM film ORDER BY title LIMIT 50,5) AS tmp USING(film_id);
+有时候可以记录上次数据读取位置，下次可以直接从该位置开始扫描，这样就可以避免使用OFFSET，例如:
+&gt; SELECT id FROM t LIMIT 10000, 10;
+改为
+&gt; SELECT id FROM t WHERE id &gt; 10000 LIMIT 10;
+- 优化UNION。MySQL处理UINON的策略是先创建临时表，然后把各个查询结果插入到临时表中，最后再来做查询。因此很多优化策略在UNION中都没有很好的处理。此时需要手动将WHERE、LIMIT、ORDER BY等条件字句放到各个子查询中，以便优化器可以充分利用这些条件进行优化。除非确实需要服务器去重，否则一定要使用UNION ALL，如果没有ALL关键字，MySQL会给临时表加上DISTINCT选项，这会导致整个临时表的数据做唯一性检查，这样做的代价非常高。当然即使使用了ALL关键字，MySQL也总是将结果放入临时表，然后再读出返回给客户端。虽然很多时候没有这个必要，比如有时候可以直接把子查询的结果返回给客户端。
 </code></pre>
       
 
@@ -428,7 +457,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -436,7 +465,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
              
               <li class="article-tag-list-item">
