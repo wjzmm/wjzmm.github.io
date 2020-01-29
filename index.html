@@ -358,6 +358,15 @@
 </blockquote>
 </li>
 </ol>
+<h3 id="2-awk命令"><a href="#2-awk命令" class="headerlink" title="2.awk命令"></a>2.awk命令</h3><p>与普通的linux命令不同，awk命令更多情况下被称作一种编程语言。其一般被用作linux/unix下的文本和数据处理。数据可以来自于文件，或者其他命令的输出，它支持用户自定义函数和正则表达式等功能。<br>awk命令基本结构如下：</p>
+<blockquote>
+<p>awk ‘BEGIN{ print “start” } pattern{ commands } END{ print “end” }’ file<br>一个awk命令通常由：BEGIN语句块、使用模式匹配的通用语句块、END语句块三部分组成。这三部分是可选的，任何一个部分都可以不出现在脚本中，脚本通常被单引号或者双引号引用。例如：<br>awk ‘BEGIN{ i=0 } { i++ } END{ print i }’ filename<br>对任意一个awk命令<br>awk ‘BEGIN{ commands } pattern{ commands } END{ commands }’<br>工作流程是：</p>
+<ol>
+<li>执行BEGIN{commands}语句块中的语句。</li>
+<li>从文件或者标准输入(stdin)输入一行，然后执行pattern{commands}语句块，它逐行扫描文件，从第一行到最后一行重复这个过程，直到所有的文件都被读取完毕。</li>
+<li>当读至输入流末尾时，执行END{commands}语句块。<br>BEGIN语句块：在awk开始从输入流读取文件之前执行，常用与变量初始化，是一个可选的语句块。<br>END语句块：在awk从输入流中读取完所有行之后被执行，可用来打印汇总信息，也是一个可选的语句块。<br>pattern语句块：命令中最重要的部分，也是可选的。如果没有pattern语句块，默认执行{print}打印每一个读取到的行。awk读取每一行时都会执行该语句。</li>
+</ol>
+</blockquote>
 
       
 
@@ -375,11 +384,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件处理</a>
         		</li>
       		
 		</ul>
@@ -549,11 +558,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">查找</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">查找</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
         		</li>
       		
 		</ul>
@@ -809,7 +818,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 把星子放入眸
+    		&copy; 2020 把星子放入眸
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -892,6 +901,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">经验总结</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
@@ -904,19 +925,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">经验总结</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
              
               <li class="article-tag-list-item">
