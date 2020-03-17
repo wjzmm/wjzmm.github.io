@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/3 | 404Found</title>
+  <title>MySQL学习大纲 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学着写点东西，现在不开始就永远不会不是么。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="404Found">
-<meta property="og:url" content="http://yoursite.com/archives/2020/03/index.html">
+  <meta name="description" content="什么是索引？ 索引，是一种以空间换时间的方法，类似于书的目录，方便帮助我们迅速定位到想要的数据。官方对索引的定义是“帮助Mysql高效获取数据的一种数据结构”，可见索引的本质是一种数据结构。索引的实现有很多中，例如Hash索引，B树索引，B+树索引，和全文索引。使用索引可以提高数据的检索速度，提高系统性能，但同时创建维护索引也需要耗费时间和空间。  什么是B树索引? B树又名平衡多路查找树，其基">
+<meta name="keywords" content="MySQL,MVVC,B树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL学习大纲">
+<meta property="og:url" content="http://yoursite.com/2020/03/17/MySQL学习大纲/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="学着写点东西，现在不开始就永远不会不是么。">
+<meta property="og:description" content="什么是索引？ 索引，是一种以空间换时间的方法，类似于书的目录，方便帮助我们迅速定位到想要的数据。官方对索引的定义是“帮助Mysql高效获取数据的一种数据结构”，可见索引的本质是一种数据结构。索引的实现有很多中，例如Hash索引，B树索引，B+树索引，和全文索引。使用索引可以提高数据的检索速度，提高系统性能，但同时创建维护索引也需要耗费时间和空间。  什么是B树索引? B树又名平衡多路查找树，其基">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-17T08:15:39.874Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404Found">
-<meta name="twitter:description" content="学着写点东西，现在不开始就永远不会不是么。">
+<meta name="twitter:title" content="MySQL学习大纲">
+<meta name="twitter:description" content="什么是索引？ 索引，是一种以空间换时间的方法，类似于书的目录，方便帮助我们迅速定位到想要的数据。官方对索引的定义是“帮助Mysql高效获取数据的一种数据结构”，可见索引的本质是一种数据结构。索引的实现有很多中，例如Hash索引，B树索引，B+树索引，和全文索引。使用索引可以提高数据的检索速度，提高系统性能，但同时创建维护索引也需要耗费时间和空间。  什么是B树索引? B树又名平衡多路查找树，其基">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -155,36 +157,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL学习大纲" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/MySQL学习大纲/" class="archive-article-date">
-  	<time datetime="2020-03-17T08:12:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/MySQL学习大纲/">MySQL学习大纲</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL学习大纲
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/17/MySQL学习大纲/" class="archive-article-date">
+  	<time datetime="2020-03-17T08:12:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>什么是索引？</p>
+<p>索引，是一种以空间换时间的方法，类似于书的目录，方便帮助我们迅速定位到想要的数据。官方对索引的定义是“帮助Mysql高效获取数据的一种数据结构”，可见索引的本质是一种数据结构。<br>索引的实现有很多中，例如Hash索引，B树索引，B+树索引，和全文索引。使用索引可以提高数据的检索速度，提高系统性能，但同时创建维护索引也需要耗费时间和空间。</p>
+</li>
+<li><p>什么是B树索引?</p>
+<p>B树又名平衡多路查找树，其基本特性是：</p>
+<ol>
+<li>所有节点的关键字按递增方式排序，左小右大。</li>
+<li>非叶子节点的节点数大于1，且小于等于M。(M&gt;=2，空树除外)</li>
+<li>节点关键字数大于等于ceil(m/2) - 1，且小于等于M-1个。(ceil为向上取整)</li>
+<li>所有叶子节点都在同一层，叶子节点的子节点指针指向null。</li>
+</ol>
+<p>B树相比于平衡二叉树，每个节点包含的关键词数量增加了，每次加载能加载更多的关键词到磁盘，因此可以加快查找速度。此外，因为每个一层节点数量增多，树的整体高度降低，也有效降低了查找的时间复杂度。</p>
+</li>
+<li><p>什么是B+树索引?</p>
+<p>B+树是B树的一种升级版。相比于B树，B+树更加充分利用了节点的空间，让查找速度也更加稳定。B+树的特性：</p>
+<ol>
+<li>跟B树不同，B+树的非叶子节点不保存关键词记录的指针，只进行数据索引，这样可以使节点有更多的空间容纳更多的数据索引。因此B+树的高度更低，查询速度更快。</li>
+<li>B+树只有叶子节点会保存关键词记录的指针，数据查询必须到叶子节点才能获取到真正的数据，所以B+树查询的效率更加稳定。(等于树的高度)</li>
+<li>B+树的所有叶子节点从小到大有序排列，且每个节点都会保存指向其右侧兄弟节点的指针，因此范围查询遍历更加高效。有利于做全表扫描。</li>
+<li>非叶子节点的子节点数等于关键词数</li>
+</ol>
+<p>B树与B+树相比，其优势在于因为所有子节点都保存数据，所以查询根节点附近的数据时速度很快，热点数据查询效率比较高。</p>
+</li>
+<li><p>索引的设计使用原则?</p>
+<ol>
+<li>频繁作为查询条件的字段适合创建索引。</li>
+<li>更新频繁的字段不适合创建索引。</li>
+<li>不能有效区分数据的字段不适合作为索引。(例如性别，男、女，区分度太低)</li>
+<li>尽可能扩展索引而不是新建索引。例如在已有索引a的情况下，要创建(a,b)索引，直接扩展原有索引就好。</li>
+<li>定义有外键的数据列一定要有索引。</li>
+<li>查询较少，重复值比较多的列不要创建索引。</li>
+<li>定义为text，blob和image的数据列不要创建索引。</li>
+<li>最左前缀匹配原则。mysql会一直向右匹配直到遇见范围查询停止匹配。对于查询a=2 and b=2 and c&gt;3 and d = 4，如果建立(a,b,c,d)的索引，d是不会用上的，因为遇上c&gt;3范围匹配时就停止了，此时创建(a,b,d,c)就可以用上所有的索引。</li>
+</ol>
+<p>最左前缀匹配原则，顾名思义，按照索引的定义顺序，最左侧的最优先生效。定义时，把where最经常使用的一句放在最左边。</p>
+</li>
+<li><p>Mysql存储引擎MyISAM和InnoDB区别？</p>
+<p>MyISAM使用B+树作为索引，叶子节点存储了数据记录的地址。MyISAM在检索数据的时候，首先根据key查询索引，找到对应的叶子节点，然后根据其data域的地址查询具体的数据记录。其所以跟数据是分开存储的，因此MyISAM的索引又被成为非聚簇索引。</p>
+<p>InnoDB不同之处在于，其数据文件本身就是索引文件。InnoDB的数据文件本身就是按照B+树组织的索引结构。数据跟所以放在一起，叶子节点存储了完整的数据记录，这种索引组织方式也叫聚簇索引。InnoDB的记录必须有主键，如果没有显示指定主键，InnoDB会默认生成一个隐含字段作为主键，其类型为长整型，长度6个字节。</p>
+<p>另一个不同之处在于，InnoDB的辅助索引，其叶子节点保存的是对应数据记录主键的值，使用辅助索引查询到对应的主键值后，再根据主键值查询主索引最终找到对应的数据记录。(这个过程被称为回表)<br>(此外还有个索引覆盖的概念，其实就是在进行数据查询时索引表就已经有足够的数据返回，无需再到主键索引表查询数据。这里覆盖的含义是辅助索引或者联合索引的查询结构就cover了所需的数据)</p>
+<p>因此，使用InnoDB作为存储引擎的时候，应尽量使用与记录无关的自增字段作为主键。因为InnoDB使用聚簇索引，数据按照主键顺序存储在叶子节点。使用自增主键，每次插入记录都可以直接插入到下一个位置，不需要移动数据，会更加高效一些。</p>
+</li>
+<li><p>什么是数据库事务?</p>
+<p>数据库的事务，是一个不可分割的数据库操作序列，也是数据库并发控制的基本单位。数据库事务执行的结果是数据库从一个状态转移到另一个状态。事务是指逻辑上的一组操作，要么都执行，要么都不执行。</p>
+<p>数据库的事务主要有ACID四大特性：</p>
+<ol>
+<li>Atomicity，原子性，事务是最小的执行单位，不可分割。事务的原子性保证事务要么全部完成，要不都不执行。</li>
+<li>Consistency，一致性，执行事务前后，数据保持一致。多个事务对数据读取的结果是相同的。</li>
+<li>Isolation，隔离性，并发访问数据库时，一个用户的事务不被其他事务干扰，各个事务之间相互独立。</li>
+<li>Durability，持久性，一个事务对数据库造成的改变是持久的，数据库故障也不会对其造成任何影响。</li>
+</ol>
+</li>
+<li><p>什么是脏读?幻读?不可重复读?</p>
+<ol>
+<li>脏读，一个事务访问到了另一个事务中没有提交的数据。</li>
+<li>幻读，在某个数据读取数据之后，另一个事务向表中插入了数据，前一个事物再次读取时会发现多了几行，就跟产生了幻觉一样。一个事物两次查询结果记录条数不一致。</li>
+<li>不可重复读，一个事物读取某条记录两次，得到的结果不一致。首次读取数据后，其他事务对该数据进行了修改。</li>
+</ol>
+</li>
+<li><p>什么是数据库的隔离级别?</p>
+<p>MySQL共有四个隔离级别，分别是读取未提交、读取已提交、可重复读、可串行化。InnoDB中的默认隔离级别为可重复读。</p>
+<ol>
+<li>读取未提交。在该隔离级别，所有事物都可以看到其他事务没有提交的结果。因此会导致脏读、幻读、和不可重复读。</li>
+<li>读取已提交。一个事务只能看到其他已提交事务的结果。这种隔离界别会导致幻读和不可重复读。因为在两次读取期间可能会有其他事务修改数据。</li>
+<li>可重复读。MySQL InnoDB的默认隔离级别。可重复读可以确保事务在多次读取同一条记录时，获取到相同的结果，但是不能避免幻读的问题。(看起来是加了行锁)</li>
+<li>可串行化。最高的隔离级别，串行化执行数据，解决幻读的问题，这个级别会导致大量的超时和竞争。</li>
+</ol>
+</li>
+<li><p>数据库内部有哪些锁?</p>
+<p>按照锁的粒度分类，可以把数据库锁分为行级锁(InnoDB)、表级锁(MyISAM)和页级锁(BDB)。</p>
+<ol>
+<li>行级锁，是MySQL中粒度最小的一种锁，表示只对当前操作的行加锁。行级锁加锁粒度最小，但是加锁开销也最大。行级锁分为共享锁和排他锁。InnoDB的行级锁基于索引实现，select * from table where key = val for update;</li>
+<li>表级锁，是Mysql中粒度最大的一种锁，表示对当前的整张表加锁。他实现简单，资源消耗低，大部分引擎都支持。表级锁也分为共享锁和排他锁。</li>
+<li>页级锁，是粒度介于表级锁和行级锁之间的一种锁。通常用于锁定相邻的一组数据。</li>
+</ol>
+<p>按照锁的类别来分，可以把数据库锁分为共享锁和排他锁。</p>
+<ol>
+<li>共享锁，又叫读锁，当需要读取数据时，加上共享锁。共享锁可以同时加多个。</li>
+<li>排他锁，又叫写锁，当需要写入数据时，需要加上排他锁，排他锁跟其他排他锁以及共享锁都互斥。</li>
+</ol>
+<p>此外，数据库中还有乐观锁与悲观锁的概念。主要用于事务的并发控制。</p>
+<ol>
+<li>乐观锁，假设不会发生冲突，只在提交的时候校验是否违反事务的完整性。修改数据的时候把事务锁起来，直到事务提交。通过version的方式实现行锁定，一般通过版本号或者CAS实现。</li>
+<li>悲观锁，假设一定会发生冲突，屏蔽一切可能打破数据完整性的操作。在查询的时候就把事务锁起来，直到事务提交。一般通过数据库的锁实现。</li>
+</ol>
+<p>乐观锁多用于读多写少的场景，因为写入少那么冲突就会少，可以提高吞吐量。悲观锁多用于写多的情况，此时使用乐观锁不断重试反而可能降低性能。</p>
+</li>
+<li><p>什么是MVVC?</p>
+<p>MVVC，多版本并发控制，是数据库系统实现并发访问的一种方法。MySQL的InnoDB引擎支持MVVC，并且只在读取已提交和可重复读隔离界别下生效。面对高并发事务时，MVVC比单纯的行锁更加高效。MVVC的实现原理可以简单总结为以下几点：</p>
+<ol>
+<li>InnoDB的数据每条数据记录，除用户创建的字段之外，还有两个隐藏字段，分别是data_trasn_id和data_roll_ptr，其中data_trans_id保存了最好对该条记录进行修改的事务编号，而data_roll_ptr则保存了该条记录被修改的历史版本。此外如果改记录没有主键的话，还有生成一个默认的主键。在数据记录的头部还有一个删除标志位deleted_flag，用于标识记录是否被删除。</li>
+<li>在RC或者RR隔离级别下，每次执行select语句之前，都会将当前系统的活跃事务拷贝到一个列表生成ReadView，ReadView可以看做一个有序的窗口，保存当前活跃的事务ID列表，最左侧的称为up_limit_id，是当前活跃事务ID的最小值。最右侧的成为low_limit_id，是当前活跃事务的最大值。事务ID是事务开始是由InnoDB分配，代表了事务创建的先后顺序。因此可以通过事务ID大小来决定版本的可见性。</li>
+<li>如果当前版本的data_trans_id小于up_limit_id，说明当前记录版本是由已提交的事务修改的，可以直接访问。</li>
+<li>如果当前版本的data_trans_id大于low_limit_id，说明最后修改记录的事务是在ReadView创建之后才生成的，该版本的数据不能直接访问。此时根据data_roll_ptr链表中寻找上一个记录版本，再次进入3。</li>
+<li>如果当前版本的data_trans_id在up_limit_id和low_limit_id之间，则在ReadView中寻找是否包含data_trans_id的版本，如果找到，则说明该记录是被未提交的事务修改的，在data_roll_ptr中寻找上一个记录版本，在进入4，如果没找到，则说明修改该记录的事务已提交，可以直接读取记录。</li>
+<li>此时，数据记录已经可以访问，最后检查头部的deleted_flag是否为true，如果为true，说明该条记录已经被删除，返回空数据。</li>
+<li>最后补充一点，在RC隔离级别下，每次执行语句之前ReadView都会重新创建。在RR级别下，ReadView只在事务执行开始是执行一次，直到事务结束。所以RR级别下，事务执行期间所以其他事务的改动都是不可见的。</li>
+</ol>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -204,65 +305,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/17/MySQL学习大纲/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/面试中的操作系统-进程与线程/" class="archive-article-date">
-  	<time datetime="2020-03-16T09:51:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/16/面试中的操作系统-进程与线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面试中的操作系统-进程与线程</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/面试中的操作系统-进程与线程/">面试中的操作系统-进程与线程</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">进程与线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -285,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
