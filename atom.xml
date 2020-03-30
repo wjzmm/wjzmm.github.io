@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-17T08:37:59.818Z</updated>
+  <updated>2020-03-30T02:03:38.418Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试中的计算机网络(二)</title>
+    <link href="http://yoursite.com/2020/03/30/%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%BA%8C/"/>
+    <id>http://yoursite.com/2020/03/30/面试中的计算机网络-二/</id>
+    <published>2020-03-30T02:01:58.000Z</published>
+    <updated>2020-03-30T02:03:38.418Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ol><li><p>TCP和UDP特点</p><p>TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信<br>UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。</p></li><li><p>TCP的粘包问题</p><ol><li>UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。</li><li>TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。</li><li>发生粘包的原因主要是因为发送缓冲区大小固定，而数据大小不固定，如果数据超过缓冲区的长度，就会导致一次请求的数据分为多次发送。此外如果数据长度大于最大报文段MSS长度，也会导致拆包。最后，接收端没有及时读取接收缓冲区的数据时，也会导致粘包。</li><li>解决粘包问题的办法：消息定长、设置消息的边界（通过特殊字符）、自定义协议定义消息投消息体，头部中定义数据长度。</li></ol></li><li><p>Nagle算法</p><p>Nagle算法是指在TCP链接上最多只允许有一个未被确认的分组，在该分组收到确认之前不会发送其他的小分组。因为本身TCP协议发送数据时候要加上协议头，为了尽可能利用网络带宽，避免网络中有很多小的数据传送。Nagle的规则：</p><ol><li>如果包长达到MSS，则允许发送。</li><li>如果该包含有fin，则允许发送。</li><li>设置了TCP_NODELAY选项，则允许发送。</li><li>未设置TC_CORK选项，且所有发出去的小数据包都已收到确认，则允许发送。</li><li>若发生了超时（200ms），则立刻发送。</li></ol><p>“””<br>if there is new data to send</p><pre><code>if the window size &gt;= MSS and available data is &gt;= MSS    send complete MSS segment nowelse    if there is unconfirmed data still in the pipe        enqueue data in the buffer until an acknowledge is received    else        send data immediately    end ifend if</code></pre><p> end if<br>“””</p></li><li><p>延迟确认机制</p><p>针对ACK进行的优化，目的也是减少网络中的小报文。收到对方的报文之后，不会立刻发送ACK，二是等待一段时间，看有没有应答数据，跟随应答数据一起发送ACK报文。</p><p>延迟确认和nagle算法共存时，可能在数据包比较小的场景中导致较高的时延。</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;计算机网络&quot;&gt;&lt;a href=&quot;#计算机网络&quot; class=&quot;headerlink&quot; title=&quot;计算机网络&quot;&gt;&lt;/a&gt;计算机网络&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;TCP和UDP特点&lt;/p&gt;
+&lt;p&gt;TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信
+      
+    
+    </summary>
+    
+    
+      <category term="计算机网络" scheme="http://yoursite.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="Nagle" scheme="http://yoursite.com/tags/Nagle/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL学习大纲</title>
