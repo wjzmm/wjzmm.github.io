@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>面试中的计算机网络之三次握手四次断开 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述三次握手过程： 第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。 第">
+  <meta name="description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述 三次握手过程：  第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。">
 <meta name="keywords" content="面试中的计算机网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试中的计算机网络之三次握手四次断开">
 <meta property="og:url" content="http://yoursite.com/2020/01/29/面试中的计算机网络之三次握手四次断开/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述三次握手过程： 第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。 第">
+<meta property="og:description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述 三次握手过程：  第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-01-30T04:15:13.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试中的计算机网络之三次握手四次断开">
-<meta name="twitter:description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述三次握手过程： 第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。 第">
+<meta name="twitter:description" content="简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。  1. TCP三次握手四次断开的过程简单描述 三次握手过程：  第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。 第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -180,26 +180,42 @@
         <blockquote>
 <p>简单整理一下面试过程中遇到的计算机网络问题，方便后面复习。</p>
 </blockquote>
-<h2 id="1-TCP三次握手四次断开的过程简单描述"><a href="#1-TCP三次握手四次断开的过程简单描述" class="headerlink" title="1. TCP三次握手四次断开的过程简单描述"></a>1. TCP三次握手四次断开的过程简单描述</h2><h4 id="三次握手过程："><a href="#三次握手过程：" class="headerlink" title="三次握手过程："></a>三次握手过程：</h4><ol>
+<h2>1. TCP三次握手四次断开的过程简单描述</h2>
+<h4>三次握手过程：</h4>
+<ol>
 <li>第一次握手。客户端发起握手请求，携带标志SYN=1，序号取随机值seq=i。此时客户端进入SYN_SENT状态，等待服务器回包。</li>
 <li>第二次握手。服务器收到请求回，回复数据包，SYN=1，ACK=1，ack=i+1，seq=j，j也是随机值。此时服务器进入SYN_RECV状态。</li>
 <li>第三次握手。客户端收到服务器回包后，回复ACK=1，ack=j+1。此时客户端跟服务器都进入ESTABLISHED状态。</li>
 </ol>
-<h5 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h5><pre><code>双端第一个数据包时，包中的序号字段seq取值为一个跟时间相关的随机值，RFC793的一种实现是一个32bit的计数器，每4ms加1。
-ack的含义是下一次期望收到的序号，握手请求本身也会占用一个序号，所以ack=seq+1。正常情况下，ack应该取值为对方seq+包中数据长度。
-握手过程中，SYN标志位置1，代表本次请求是一个握手请求，ACK标志为置1，表示该请求是一个握手回复。
-印象中，第三次握手是可以跟正常的数据合并到一起发送的。（待确认）
-</code></pre><h4 id="四次断开的过程："><a href="#四次断开的过程：" class="headerlink" title="四次断开的过程："></a>四次断开的过程：</h4><ol>
+<h5>知识点：</h5>
+<pre><code> 双端第一个数据包时，包中的序号字段seq取值为一个跟时间相关的随机值，RFC793的一种实现是一个32bit的计数器，每4ms加1。
+ ack的含义是下一次期望收到的序号，握手请求本身也会占用一个序号，所以ack=seq+1。正常情况下，ack应该取值为对方seq+包中数据长度。
+ 握手过程中，SYN标志位置1，代表本次请求是一个握手请求，ACK标志为置1，表示该请求是一个握手回复。
+ 印象中，第三次握手是可以跟正常的数据合并到一起发送的。（待确认）
+</code></pre>
+<h4>四次断开的过程：</h4>
+<ol>
 <li>第一次断开。客户端发送一个FIN=1的数据包，用于中止客户端到服务器的数据通道。此时客户端进入FIN_WAIT_1状态。</li>
 <li>第二次断开。服务器收到客户端的FIN请求之后，回复数据包ACK=1,ack=对方seq+1（FIN请求同样占用一个序号）。此时服务端进入CLOSE_WAIT状态。此时的TCP链接处于半链接状态，客户端已经不能向服务器发送数据，但是服务器依然可以向客户端发送数据。此时客户端处于FIN_WAIT_2状态。</li>
 <li>第三次断开。服务器数据发送完毕后，发送一个FIN给客户端(ACK=1)，关闭服务端到客户端的数据通道。此时服务器进入LAST_ACK状态。</li>
 <li>第四次断开。客户端收到FIN之后，回复ACK=1,ack=对方seq+1，同时进入TIME_WAIT状态。服务器收到最后的ack之后，进入CLOSED状态。</li>
 </ol>
-<h5 id="知识点：-1"><a href="#知识点：-1" class="headerlink" title="知识点："></a>知识点：</h5><pre><code>TCP是全双工的数据传输通道，所以客户端和服务端可以分别关闭自己的数据传输通道。只有双方都关闭之后，整个链接才算完整的关闭了该链接。
-</code></pre><h4 id="常见的问题："><a href="#常见的问题：" class="headerlink" title="常见的问题："></a>常见的问题：</h4><ol>
-<li><p>为什么需要三次握手，两次握手为什么不可以？<br> 目的是为了防止已失效的握手数据包到达服务端。网络中存在延迟，客户端发出的连接请求报文并未丢失，而是在某个网络节点长时间滞留了，以致延误到链接释放以后的某个时间才到达Server。这是，Server误以为这是Client发出的一个新的链接请求，于是就向客户端发送确认数据包，同意建立链接。若不采用“三次握手”，那么只要Server发出确认数据包，新的链接就建立了。由于client此时并未发出建立链接的请求，所以其不会理睬Server的确认，也不与Server通信；而这时Server一直在等待Client的请求，这样Server就白白浪费了一定的资源。若采用“三次握手”，在这种情况下，由于Server端没有收到来自客户端的确认，则就会知道Client并没有要求建立请求，就不会建立链接。</p>
+<h5>知识点：</h5>
+<pre><code> TCP是全双工的数据传输通道，所以客户端和服务端可以分别关闭自己的数据传输通道。只有双方都关闭之后，整个链接才算完整的关闭了该链接。
+</code></pre>
+<h4>常见的问题：</h4>
+<ol>
+<li>
+<p>为什么需要三次握手，两次握手为什么不可以？
+目的是为了防止已失效的握手数据包到达服务端。网络中存在延迟，客户端发出的连接请求报文并未丢失，而是在某个网络节点长时间滞留了，以致延误到链接释放以后的某个时间才到达Server。这是，Server误以为这是Client发出的一个新的链接请求，于是就向客户端发送确认数据包，同意建立链接。若不采用“三次握手”，那么只要Server发出确认数据包，新的链接就建立了。由于client此时并未发出建立链接的请求，所以其不会理睬Server的确认，也不与Server通信；而这时Server一直在等待Client的请求，这样Server就白白浪费了一定的资源。若采用“三次握手”，在这种情况下，由于Server端没有收到来自客户端的确认，则就会知道Client并没有要求建立请求，就不会建立链接。</p>
 </li>
-<li><p>为什么要有TIME_WAIT状态？<br> 在TCP链接释放过程中，首先关闭链接的一段会有TIME_WAIT状态。TIME_WAIT存在的原因主要有以下两点：<br> a. 为了保证TCP链接可靠的释放。在主动关闭方发送最后一个FIN的ack时，如果因为网络原因导致ack没有被对方收到就关闭了俩节。对方重发的FIN请求到达，此时主动关闭方已经进入CLOSED状态，因此会回复RST包。导致对方可能认为此时链接出现了问题，而此时其实链接处于正常关闭的状态。<br> b. 为了保证旧的链接的数据包在网络中彻底消失。TCP链接使用（local_ip，local_port，remote_ip，remote_port）来标志一个唯一链接。假如最后一个FIN因为超时进行了重发后双方正常关闭了了链接，并重新建立了新的链接。如果网络中遗留的上一个链接的FIN数据包到达，有可能导致不可预知的问题。为了避免这种情况，在链接关闭后的TIME_WAIT状态（2MSL的时间）时，此IP端口不会被使用，不会建立新的链接。<br> c. MSL是报文最大生存时间，2MSL的目的是让对方的FIN报文以及自己的ACK报文都能在网络中消失。<br> d. 对处于TIME_WAIT状态的端口建立新的链接时会提示address already in use，为了防止这种情况，可以设置socket的SO_REUSEADDR的选项来避免TIME_WAIT状态。</p>
+<li>
+<p>为什么要有TIME_WAIT状态？
+在TCP链接释放过程中，首先关闭链接的一段会有TIME_WAIT状态。TIME_WAIT存在的原因主要有以下两点：
+a. 为了保证TCP链接可靠的释放。在主动关闭方发送最后一个FIN的ack时，如果因为网络原因导致ack没有被对方收到就关闭了俩节。对方重发的FIN请求到达，此时主动关闭方已经进入CLOSED状态，因此会回复RST包。导致对方可能认为此时链接出现了问题，而此时其实链接处于正常关闭的状态。
+b. 为了保证旧的链接的数据包在网络中彻底消失。TCP链接使用（local_ip，local_port，remote_ip，remote_port）来标志一个唯一链接。假如最后一个FIN因为超时进行了重发后双方正常关闭了了链接，并重新建立了新的链接。如果网络中遗留的上一个链接的FIN数据包到达，有可能导致不可预知的问题。为了避免这种情况，在链接关闭后的TIME_WAIT状态（2MSL的时间）时，此IP端口不会被使用，不会建立新的链接。
+c. MSL是报文最大生存时间，2MSL的目的是让对方的FIN报文以及自己的ACK报文都能在网络中消失。
+d. 对处于TIME_WAIT状态的端口建立新的链接时会提示address already in use，为了防止这种情况，可以设置socket的SO_REUSEADDR的选项来避免TIME_WAIT状态。</p>
 </li>
 </ol>
 
@@ -416,7 +432,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -424,27 +440,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">B树</a>
+                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,19 +476,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVC</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+                <a href="javascript:void(0)" class="js-tag color3">B树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
             
             <div class="clearfix"></div>
