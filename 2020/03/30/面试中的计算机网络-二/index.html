@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>面试中的计算机网络(二) | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机网络   TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信 UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。   TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲">
+  <meta name="description" content="计算机网络 TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。  TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲区大小固">
 <meta name="keywords" content="计算机网络,Nagle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试中的计算机网络(二)">
 <meta property="og:url" content="http://yoursite.com/2020/03/30/面试中的计算机网络-二/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="计算机网络   TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信 UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。   TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲">
+<meta property="og:description" content="计算机网络 TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。  TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲区大小固">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-03-30T02:03:38.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试中的计算机网络(二)">
-<meta name="twitter:description" content="计算机网络   TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信 UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。   TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲">
+<meta name="twitter:description" content="计算机网络 TCP和UDP特点 TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。  TCP的粘包问题  UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。 TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。 发生粘包的原因主要是因为发送缓冲区大小固">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -177,15 +177,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2>计算机网络</h2>
-<ol>
-<li>
-<p>TCP和UDP特点</p>
-<p>TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信
-UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。</p>
+        <h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><ol>
+<li><p>TCP和UDP特点</p>
+<p>TCP：面向连接，提供可靠交付，拥塞控制，流量控制提供全双工通信，面向字节流的一对一通信<br>UDP：无连接，尽最大可能交付，面向报文，支持一对一，一对多和多对一。</p>
 </li>
-<li>
-<p>TCP的粘包问题</p>
+<li><p>TCP的粘包问题</p>
 <ol>
 <li>UDP不会有粘包问题，因为UDP是面向报文的，头部中有报文的最大长度。</li>
 <li>TCP是面向字节流的，数据块之间没有明显的边界，所以TCP会有粘包问题。</li>
@@ -193,8 +189,7 @@ UDP：无连接，尽最大可能交付，面向报文，支持一对一，一�
 <li>解决粘包问题的办法：消息定长、设置消息的边界（通过特殊字符）、自定义协议定义消息投消息体，头部中定义数据长度。</li>
 </ol>
 </li>
-<li>
-<p>Nagle算法</p>
+<li><p>Nagle算法</p>
 <p>Nagle算法是指在TCP链接上最多只允许有一个未被确认的分组，在该分组收到确认之前不会发送其他的小分组。因为本身TCP协议发送数据时候要加上协议头，为了尽可能利用网络带宽，避免网络中有很多小的数据传送。Nagle的规则：</p>
 <ol>
 <li>如果包长达到MSS，则允许发送。</li>
@@ -203,22 +198,19 @@ UDP：无连接，尽最大可能交付，面向报文，支持一对一，一�
 <li>未设置TC_CORK选项，且所有发出去的小数据包都已收到确认，则允许发送。</li>
 <li>若发生了超时（200ms），则立刻发送。</li>
 </ol>
-<p>&quot;&quot;&quot;
-if there is new data to send
-if the window size &gt;= MSS and available data is &gt;= MSS
-send complete MSS segment now
+<p>“””<br>if there is new data to send</p>
+<pre><code>if the window size &gt;= MSS and available data is &gt;= MSS
+    send complete MSS segment now
 else
-if there is unconfirmed data still in the pipe
-enqueue data in the buffer until an acknowledge is received
-else
-send data immediately
+    if there is unconfirmed data still in the pipe
+        enqueue data in the buffer until an acknowledge is received
+    else
+        send data immediately
+    end if
 end if
-end if
-end if
-&quot;&quot;&quot;</p>
+</code></pre><p> end if<br>“””</p>
 </li>
-<li>
-<p>延迟确认机制</p>
+<li><p>延迟确认机制</p>
 <p>针对ACK进行的优化，目的也是减少网络中的小报文。收到对方的报文之后，不会立刻发送ACK，二是等待一段时间，看有没有应答数据，跟随应答数据一起发送ACK报文。</p>
 <p>延迟确认和nagle算法共存时，可能在数据包比较小的场景中导致较高的时延。</p>
 </li>
@@ -310,7 +302,7 @@ end if
   
 <nav id="article-nav">
   
-    <a href="/2020/12/10/缓存这点子事儿/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/12/10/缓存那点子事儿/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -451,7 +443,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -459,39 +451,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +471,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
               </li>
             
             <div class="clearfix"></div>

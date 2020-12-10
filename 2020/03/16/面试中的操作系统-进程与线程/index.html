@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>面试中的操作系统-进程与线程 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="面试中的操作系统之进程、线程和协程 线程与进程的定义 进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。 线程一般由pthread_c">
+  <meta name="description" content="面试中的操作系统之进程、线程和协程线程与进程的定义进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。线程一般由pthread_crea">
 <meta name="keywords" content="面试,操作系统,进程与线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试中的操作系统-进程与线程">
 <meta property="og:url" content="http://yoursite.com/2020/03/16/面试中的操作系统-进程与线程/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="面试中的操作系统之进程、线程和协程 线程与进程的定义 进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。 线程一般由pthread_c">
+<meta property="og:description" content="面试中的操作系统之进程、线程和协程线程与进程的定义进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。线程一般由pthread_crea">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2020-03-16T10:08:06.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面试中的操作系统-进程与线程">
-<meta name="twitter:description" content="面试中的操作系统之进程、线程和协程 线程与进程的定义 进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。 线程一般由pthread_c">
+<meta name="twitter:description" content="面试中的操作系统之进程、线程和协程线程与进程的定义进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。  在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。线程一般由pthread_crea">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -177,20 +177,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1>面试中的操作系统之进程、线程和协程</h1>
-<h3>线程与进程的定义</h3>
-<p><strong>进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。</strong></p>
+        <h1 id="面试中的操作系统之进程、线程和协程"><a href="#面试中的操作系统之进程、线程和协程" class="headerlink" title="面试中的操作系统之进程、线程和协程"></a>面试中的操作系统之进程、线程和协程</h1><h3 id="线程与进程的定义"><a href="#线程与进程的定义" class="headerlink" title="线程与进程的定义"></a>线程与进程的定义</h3><p><strong>进程是操作系统分配资源和调度的最小单位，是独立功能的程序在特定数据集合上的一次执行过程。线程是调度的基本单位，一个进程内可以有多个线程，共享进程的资源。</strong></p>
 <blockquote>
-<p>在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。
-线程一般由pthread_create创建。同一个进程下可以创建多个线程，他们共享进程拥有的资源和数据，因此存在竞争的风险。因此多线程访问共享资源时，需要有同步措施以保证数据安全。线&gt; 程的生命周期跟父进程的生命周期有关，如果父进程退出，那么他所创建的所有线程都会退出。</p>
+<p>在linux下，进程的创建由fork实现。当fork函数被调用时，新创建的进程会完全拷贝父进程的资源和数据。fork调用结束后，父进程和子进程独立运行互不影响。<br>线程一般由pthread_create创建。同一个进程下可以创建多个线程，他们共享进程拥有的资源和数据，因此存在竞争的风险。因此多线程访问共享资源时，需要有同步措施以保证数据安全。线&gt; 程的生命周期跟父进程的生命周期有关，如果父进程退出，那么他所创建的所有线程都会退出。</p>
 </blockquote>
-<h3>进程/线程间通信方式</h3>
-<ol>
-<li>进程间常用的通信方式有：
-共享内存、消息队列、信号量、有名管道、无名管道、信号、文件、socket
-<ol start="2">
-<li>线程间通信方式，除进程间通信方式之外，还有：
-互斥量、锁</li>
+<h3 id="进程-线程间通信方式"><a href="#进程-线程间通信方式" class="headerlink" title="进程/线程间通信方式"></a>进程/线程间通信方式</h3><ol>
+<li>进程间常用的通信方式有：<br> 共享内存、消息队列、信号量、有名管道、无名管道、信号、文件、socket<ol>
+<li>线程间通信方式，除进程间通信方式之外，还有：<br> 互斥量、锁</li>
 </ol>
 </li>
 </ol>
@@ -426,7 +419,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -434,39 +427,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,15 +447,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
               </li>
             
             <div class="clearfix"></div>

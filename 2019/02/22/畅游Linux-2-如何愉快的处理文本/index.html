@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>畅游Linux(2)-如何愉快的处理文件 | 404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
-<meta name="keywords" content="Linux,文件处理,经验总结">
+  <meta name="description" content="1.grep命令grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern filegrep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：  -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文件时，">
+<meta name="keywords" content="Linux,经验总结,文件处理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="畅游Linux(2)-如何愉快的处理文件">
 <meta property="og:url" content="http://yoursite.com/2019/02/22/畅游Linux-2-如何愉快的处理文本/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
+<meta property="og:description" content="1.grep命令grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern filegrep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：  -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文件时，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-07T09:19:59.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="畅游Linux(2)-如何愉快的处理文件">
-<meta name="twitter:description" content="1.grep命令 grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern file grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：   -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文">
+<meta name="twitter:description" content="1.grep命令grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:  grep [option] pattern filegrep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：  -c 只打印匹配的文本行数，不显示内容。 -i 匹配时忽略大小写。 -h 当搜索多个文件时，">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -177,12 +177,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3>1.grep命令</h3>
-<p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p>
+        <h3 id="1-grep命令"><a href="#1-grep命令" class="headerlink" title="1.grep命令"></a>1.grep命令</h3><p>grep全称global regular expression print（全局正则表达式输出），常用于文件中特定内容的查找，其命令格式为:</p>
 <blockquote>
-<p>grep [option] pattern file
-grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p>
-</blockquote>
+<p>grep [option] pattern file<br>grep命令会把查到的那一行展示出来，并不会改变被查找的文件内容，option常用取值如下：</p>
 <ol>
 <li>-c 只打印匹配的文本行数，不显示内容。</li>
 <li>-i 匹配时忽略大小写。</li>
@@ -195,82 +192,55 @@ grep命令会把查到的那一行展示出来，并不会改变被查找的文�
 <li>-r 递归搜索，搜索当前目录和子目录。</li>
 <li>-E 支持扩展正则表达式。</li>
 </ol>
+</blockquote>
 <p>下面找几个典型的使用locate查找的例子：</p>
 <ol>
-<li>在多个文件之间查询，查询时忽略大小写</li>
-</ol>
-<blockquote>
-<p>grep -i &quot;hello world&quot; a.txt b.txt</p>
+<li>在多个文件之间查询，查询时忽略大小写<blockquote>
+<p>grep -i “hello world” a.txt b.txt</p>
 </blockquote>
-<ol start="2">
-<li>将/etc/passwd中含有root的行打印出来，并展示行号</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中含有root的行打印出来，并展示行号<blockquote>
 <p>grep -n root /etc/passwd</p>
 </blockquote>
-<ol start="3">
-<li>将/etc/passwd中不含root的行提取戳来</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中不含root的行提取戳来<blockquote>
 <p>grep -v root /etc/passwd</p>
 </blockquote>
-<ol start="4">
-<li>将/etc/passwd中不含root和admin的行提取出来</li>
-</ol>
-<blockquote>
+</li>
+<li>将/etc/passwd中不含root和admin的行提取出来<blockquote>
 <p>grep -v root /etc/passwd | grep -v admin</p>
 </blockquote>
-<ol start="5">
-<li>递归查找/etc下含有root的文件并展示行号</li>
-</ol>
-<blockquote>
-<p>grep -rn root /etc
-要查找的字符串还可以使用通配符，例如：</p>
+</li>
+<li>递归查找/etc下含有root的文件并展示行号<blockquote>
+<p>grep -rn root /etc<br>要查找的字符串还可以使用通配符，例如：</p>
 </blockquote>
-<ol start="6">
-<li>查找/etc/passwd 中以r开头的行并打印</li>
-</ol>
-<blockquote>
-<p>grep -n &quot;^r&quot; /etc/passwd</p>
+</li>
+<li>查找/etc/passwd 中以r开头的行并打印<blockquote>
+<p>grep -n “^r” /etc/passwd</p>
 </blockquote>
-<ol start="7">
-<li>查找/etc/passwd中包含oo或者et的行</li>
-</ol>
-<blockquote>
-<p>grep -n &quot;oo|et&quot; /etc/passwd
-此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p>
+</li>
+<li>查找/etc/passwd中包含oo或者et的行<blockquote>
+<p>grep -n “oo|et” /etc/passwd<br>此外，grep还常用来与一些系统常用命令结合，来获取某些特定信息例如：</p>
 </blockquote>
-<ol start="9">
-<li>查看系统是否含有game相关的进程</li>
-</ol>
-<blockquote>
+</li>
+<li>查看系统是否含有game相关的进程<blockquote>
 <p>ps -ef | grep game</p>
 </blockquote>
-<ol start="10">
-<li>查看3333端口是否被监听</li>
-</ol>
-<blockquote>
+</li>
+<li>查看3333端口是否被监听<blockquote>
 <p>netstat -an | grep 3333</p>
 </blockquote>
-<h3>2.awk命令</h3>
-<p>与普通的linux命令不同，awk命令更多情况下被称作一种编程语言。其一般被用作linux/unix下的文本和数据处理。数据可以来自于文件，或者其他命令的输出，它支持用户自定义函数和正则表达式等功能。
-awk命令基本结构如下：</p>
+</li>
+</ol>
+<h3 id="2-awk命令"><a href="#2-awk命令" class="headerlink" title="2.awk命令"></a>2.awk命令</h3><p>与普通的linux命令不同，awk命令更多情况下被称作一种编程语言。其一般被用作linux/unix下的文本和数据处理。数据可以来自于文件，或者其他命令的输出，它支持用户自定义函数和正则表达式等功能。<br>awk命令基本结构如下：</p>
 <blockquote>
-<p>awk 'BEGIN{ print &quot;start&quot; } pattern{ commands } END{ print &quot;end&quot; }' file
-一个awk命令通常由：BEGIN语句块、使用模式匹配的通用语句块、END语句块三部分组成。这三部分是可选的，任何一个部分都可以不出现在脚本中，脚本通常被单引号或者双引号引用。例如：
-awk 'BEGIN{ i=0 } { i++ } END{ print i }' filename
-对任意一个awk命令
-awk 'BEGIN{ commands } pattern{ commands } END{ commands }'
-工作流程是：</p>
-</blockquote>
+<p>awk ‘BEGIN{ print “start” } pattern{ commands } END{ print “end” }’ file<br>一个awk命令通常由：BEGIN语句块、使用模式匹配的通用语句块、END语句块三部分组成。这三部分是可选的，任何一个部分都可以不出现在脚本中，脚本通常被单引号或者双引号引用。例如：<br>awk ‘BEGIN{ i=0 } { i++ } END{ print i }’ filename<br>对任意一个awk命令<br>awk ‘BEGIN{ commands } pattern{ commands } END{ commands }’<br>工作流程是：</p>
 <ol>
 <li>执行BEGIN{commands}语句块中的语句。</li>
 <li>从文件或者标准输入(stdin)输入一行，然后执行pattern{commands}语句块，它逐行扫描文件，从第一行到最后一行重复这个过程，直到所有的文件都被读取完毕。</li>
-<li>当读至输入流末尾时，执行END{commands}语句块。
-BEGIN语句块：在awk开始从输入流读取文件之前执行，常用与变量初始化，是一个可选的语句块。
-END语句块：在awk从输入流中读取完所有行之后被执行，可用来打印汇总信息，也是一个可选的语句块。
-pattern语句块：命令中最重要的部分，也是可选的。如果没有pattern语句块，默认执行{print}打印每一个读取到的行。awk读取每一行时都会执行该语句。</li>
+<li>当读至输入流末尾时，执行END{commands}语句块。<br>BEGIN语句块：在awk开始从输入流读取文件之前执行，常用与变量初始化，是一个可选的语句块。<br>END语句块：在awk从输入流中读取完所有行之后被执行，可用来打印汇总信息，也是一个可选的语句块。<br>pattern语句块：命令中最重要的部分，也是可选的。如果没有pattern语句块，默认执行{print}打印每一个读取到的行。awk读取每一行时都会执行该语句。</li>
 </ol>
+</blockquote>
 
       
 
@@ -288,11 +258,11 @@ pattern语句块：命令中最重要的部分，也是可选的。如果没有p
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验总结</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件处理</a>
         		</li>
       		
 		</ul>
@@ -503,7 +473,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,39 +481,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,15 +501,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+                <a href="javascript:void(0)" class="js-tag color5">文件处理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">后台开发</a>
+                <a href="javascript:void(0)" class="js-tag color5">正向代理</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+                <a href="javascript:void(0)" class="js-tag color5">反向代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">负载均衡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">进程与线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nagle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面试中的计算机网络</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>必知必会的面试题集合 | 404Found</title>
+  <title>404Found</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 网络服务如何保证幂等性？幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成">
-<meta name="keywords" content="面试题,后台开发">
+  <meta name="description" content="缓存这点子事缓存读：1. 尝试从缓存读取数据。 2. 不命中，则继续到数据库中读取数据。 3. 更新缓存。 缓存写：1. 先更新存储再更新缓存。 2. 先更新缓存再更新存储。       因为缓存本质上也是个存储，所以更新的时候需要更新两个存储。难以保证两个操作同时成功或者同时失败。会导致以下问题： 如果是先更新存储，再更新缓存:更新存储成功，更新缓存失败，会导致缓存中返回的旧数据，业务方读取命中">
 <meta property="og:type" content="article">
-<meta property="og:title" content="必知必会的面试题集合">
-<meta property="og:url" content="http://yoursite.com/2019/02/27/必知必会的面试题集合/index.html">
+<meta property="og:title" content="404Found">
+<meta property="og:url" content="http://yoursite.com/2020/12/10/缓存那点子事儿/index.html">
 <meta property="og:site_name" content="404Found">
-<meta property="og:description" content="1. 网络服务如何保证幂等性？幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成">
+<meta property="og:description" content="缓存这点子事缓存读：1. 尝试从缓存读取数据。 2. 不命中，则继续到数据库中读取数据。 3. 更新缓存。 缓存写：1. 先更新存储再更新缓存。 2. 先更新缓存再更新存储。       因为缓存本质上也是个存储，所以更新的时候需要更新两个存储。难以保证两个操作同时成功或者同时失败。会导致以下问题： 如果是先更新存储，再更新缓存:更新存储成功，更新缓存失败，会导致缓存中返回的旧数据，业务方读取命中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T02:50:22.090Z">
+<meta property="og:updated_time" content="2020-12-10T06:28:30.912Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="必知必会的面试题集合">
-<meta name="twitter:description" content="1. 网络服务如何保证幂等性？幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成">
+<meta name="twitter:title" content="404Found">
+<meta name="twitter:description" content="缓存这点子事缓存读：1. 尝试从缓存读取数据。 2. 不命中，则继续到数据库中读取数据。 3. 更新缓存。 缓存写：1. 先更新存储再更新缓存。 2. 先更新缓存再更新存储。       因为缓存本质上也是个存储，所以更新的时候需要更新两个存储。难以保证两个操作同时成功或者同时失败。会导致以下问题： 如果是先更新存储，再更新缓存:更新存储成功，更新缓存失败，会导致缓存中返回的旧数据，业务方读取命中">
   
     <link rel="alternative" href="/atom.xml" title="404Found" type="application/atom+xml">
   
@@ -157,75 +156,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-必知必会的面试题集合" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-缓存那点子事儿" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      必知必会的面试题集合
-    </h1>
-  
-
-        
-        <a href="/2019/02/27/必知必会的面试题集合/" class="archive-article-date">
-  	<time datetime="2019-02-27T06:13:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-27</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="1-网络服务如何保证幂等性？"><a href="#1-网络服务如何保证幂等性？" class="headerlink" title="1. 网络服务如何保证幂等性？"></a>1. 网络服务如何保证幂等性？</h3><p>幂等性最初来自于数学上的概念，f(x)=f(f(x)) 。当某个运算为幂等运算时，其作用在任何一个元素两次后跟作用一次的结果相同。在编程领域，幂等性意味着对同一个系统，同样的条件下，一个请求和多个重复的请求对系统资源的影响是一致的。<br>幂等性最常见的例子就是支付，用户购买商品时需要使用在线支付，如果用户支付成功，但返回结果时候网络异常，此时钱已经扣了，但用户没有收到支付成功的提醒。此时如果用户再次点击支付，将进行二次扣款，这样就会导致用户的钱被扣了两次，造成错误。<br>我们的服务有很多操作是天然实现幂等性的，比如查询接口。但对于增加，更新，删除等，如何保证幂等性呢？</p>
-<h5 id="1-全局唯一的ID"><a href="#1-全局唯一的ID" class="headerlink" title="(1). 全局唯一的ID"></a>(1). 全局唯一的ID</h5><p>对于业务的每一次操作都生成一个全局ID，在执行操作前先检查该ID是否已执行过该操作。如果没有则把ID存储，正常执行该操作，如果已存在则表明该操作已经执行。<br>订单支付这个场景就可以使用订单ID作为全局的ID，用于保证服务的幂等性。</p>
-<h5 id="2-去重表"><a href="#2-去重表" class="headerlink" title="(2). 去重表"></a>(2). 去重表</h5><p>利用数据库表的特性来实现幂等性，常用思路是在表上构建一个唯一索引，保证一旦一个操作执行完毕后，后续的操作进行相同的插入操作时没有办法写入成功。<br>例如要防止重复点赞，可以设计一个表，将被点赞内容ID和用户ID建立唯一索引，用户每次点赞就往表中写入一条数据，这样重复点赞的记录没有办法写入，就能实现点赞的幂等性。</p>
-<h5 id="3-MVCC方案"><a href="#3-MVCC方案" class="headerlink" title="(3). MVCC方案"></a>(3). MVCC方案</h5><p>多版本控制，该策略主要使用update with condition来保证多次外部请求调用对于系统的影响是一致的。在系统设计时，合理使用乐观锁，通过版本号来做乐观锁的判断条件，这样即使在并发的情况下，系统也不会有太大的问题。例如：</p>
-<blockquote>
-<p>select * from tablename where condition=#condition# //取出要跟新的对象，带有版本versoin<br>update tableName set name=#name#,version=version+1 where version=#version#</p>
-</blockquote>
-<h5 id="4-状态机"><a href="#4-状态机" class="headerlink" title="(4). 状态机"></a>(4). 状态机</h5><p>这种方法适合在有状态机流转的情况下，比如就会订单的创建和付款，订单的付款肯定是在之前，这时我们可以通过在设计状态字段时，使用int类型，并且通过值类型的大小来做幂等，比如订单的创建为0，付款成功为100,付款失败为99。</p>
-<blockquote>
-<p>update <code>order</code> set status=#{status} where id=#{id} and status&lt;#{status}</p>
-</blockquote>
-<h3 id="2-memcached和redis对比"><a href="#2-memcached和redis对比" class="headerlink" title="2. memcached和redis对比"></a>2. memcached和redis对比</h3><p>memcached和redis都属于内存数据库，在设计上有很多相同之处，功能和应用场合也相似。Redis与memcached最大的不同在于，redis的所有数据不都是一直在内存中。下面从功能，性能和应用场景简单分析一下memcached和redis。</p>
-<h5 id="1-性能"><a href="#1-性能" class="headerlink" title="(1). 性能"></a>(1). 性能</h5><p>redis使用单核，而memcached使用多喝，所以平均每一个核上redis在存储小数据是比memcached性能更高。但在100K以上的数据时，memcached的性能要高于redis。</p>
-<h5 id="2-功能"><a href="#2-功能" class="headerlink" title="(2). 功能"></a>(2). 功能</h5><pre><code>- memcached只支持内存的key-value存储，而redis则可以支持Strings，Lists，Sets，Sorted Set，Hash等多种类型。
-- memcached数据全放在内存中，不支持存储持久化，因此服务如果挂掉，数据不可恢复，而redis支持数据持久化，提供了snapshotting和AOF两种方式持久化数据到硬盘上，数据丢失后可以恢复。从这点上说，redis更像是一个完整的数据库系统。
-- memcached提供了cas命令，可以保证多个并发访问操作同一份数据的一致性问题。redis没有提供cas命令，但因为redis是单进程处理请求，所有的命令串行执行，所以并发情况下不需要考虑一致性问题。同时，redis也提供了事务的能力，可以保证特定操作的原子性。
-</code></pre><h5 id="3-应用场景"><a href="#3-应用场景" class="headerlink" title="(3). 应用场景"></a>(3). 应用场景</h5><pre><code>- 相对于memcached，redis的出现时间更晚且功能更完备，我们通常将其视为首选方案，但在某些特殊场景下，memcached有着显著的优势。一是对于小型静态数据的缓存处理，最具代表性的例子就是缓存HTML片段。memcached的内部内存管理机制相对redis来说更加简单，但也更有效率--这是因为memcached在处理元数据是所消耗的内存资源相对更少。作为memcached唯一支持的一种数据类型，字符串适合保存那些只需要读取的操作，因为字符串本身无需进一步的处理。二是memcached在横向扩展方面相对于redis也更有优势。由于其在设计上的思路倾向以及相对简单的功能设置，memcached在实现扩展是比redis简单的多。
-- redis几乎在缓存管理中的每一个方面都表现出优于memcached的性能。redis在排行榜，列表，消息订阅，队列等方面都有不错的应用场景，如果需要支持复杂类型，那么redis是你不二的选择（划水）。。。
-- https://blog.csdn.net/sosfnima/article/details/51993181
-- https://blog.csdn.net/u011489043/article/details/78922390
-</code></pre><h3 id="3-mysql性能优化"><a href="#3-mysql性能优化" class="headerlink" title="3. mysql性能优化"></a>3. mysql性能优化</h3><p>谈到Mysql优化，每个人收藏了很多技巧：不要使用SELECT * ，不要使用NULL字段，合理创建索引等等，问题是，你真的理解这些优化技巧背后的原理吗？</p>
-<h5 id="1-Scheme设计与数据类型优化"><a href="#1-Scheme设计与数据类型优化" class="headerlink" title="(1). Scheme设计与数据类型优化"></a>(1). Scheme设计与数据类型优化</h5><p>选择数据类型要遵循小而简单的原则，越小的数据类型通常会更快，占用更少的内存，磁盘，和CPU处理周期。例如整形比字符操作代价第，因而应该使用整型来存储IP地址，使用DATETIME来存储时间，而不是字符串。这里总结几个容易理解错误的几个技巧:</p>
-<pre><code>- 通常来说可以把为NULL的列改成NOT NULL不会对性能提升有很多帮助，只是如果计划在列上做索引，就应该将该列设置为NOT NULL。
-- 对指数类型指定宽度，比如INT(11)没有任何卵用，INT使用32位存储空间，那么他的表示范围已经确定，INT(1)和INT(20)对于存储和计算都是相同的。
-- UNSIGNED标识不允许负值，大致上可以使正整数的上线提高一倍，比如TINYINT的存储范围是-128~127，而UNSIGNED TINYINT的存储范围是0~255。
-- 通常来讲,没有太大的必要使用DECIMAL数据类型。即使需要存储财务数据时，仍然可以使用BIGINT。比如需要精确到万分之一，那么可以将数据乘以一万然后使用BIGINT存储，这样可以避免浮点数计算不准确和DECIMAL精确计算代价高的问题。
-- TIMESTAMP使用4个字节存储，DATETIMNE使用8个字节存储。因为TIMESTAMP只能表示1970-2038年，比DATETIME的表示范围小很多，而且TIMESTAMP的值因时区不同而不同。
-- 大多数情况下没有使用枚举类型的必要，其中一个缺点是枚举的字符串列表是固定的，添加和删除字符串必须使用ALTER TABLE。
-- schema的列不要太多。原因是存储引擎的API工作时需要在服务器层和存储层之间通过缓冲格式拷贝数据，然后在服务器层将缓冲数据解码成各个列，这个转换的过程代价很高。如果列太多而实际使用的列很少的话，会导致CPU占用过高。
-- 大表ALTER TABLE非常耗时，MySQL执行大部分修改结构操作的方法是用新的结构创建一个空表，然后从旧的表中查出所有数据插入到新表，然后删除旧表。尤其当内存不大而表很大，而且还有很大索引的情况下，耗时更久。
-</code></pre><h5 id="2-创建高性能索引"><a href="#2-创建高性能索引" class="headerlink" title="(2). 创建高性能索引"></a>(2). 创建高性能索引</h5><p>索引是提高MySQL查询性能的一个重要途径，但过多的索引可能会导致过高的磁盘使用率以及过高的内存占用，从而影响应用程序的整体性能。应当尽量避免事后才想起添加索引，因为事后可能需要大量的监控大量的SQL才能定位到问题所在，而且添加索引的时间肯定大于初试添加索引的时间。<br>创建索引时，应注意以下几个问题：</p>
-<pre><code>- 非独立的列无法使用索引，例如表达式，函数等等
-- 如果列很长，可以索引开始的部分字符，这样可以有效减少索引空间，提高索引效率
-- 多数情况下，多个列上创建索引不能提高查询性能。当多个索引做相交操作时，一个包含所有相关列的索引优于多个独立索引。当多个索引做联合操作时，对结果集的合并、排序等操作要消耗大量的CPU和内存资源，特别是当其中的某些索引选择性不高，需要返回合并大量数据的时候，查询成本更高，这个时候还不如走全表扫描。
-- 避免多个范围条件。
-- 覆盖索引。如果一个索引包含或者说覆盖所有需要查询的字段的值，那么就没有必要再回表查询，这就成为覆盖索引。覆盖索引是非常有用的工具，可以极大地提高性能，因为查询只需要扫描索引会带来额外的好处：索引条目小于数据行大小，如果只读取索引，极大减少数据访问量。索引是有按照列增值顺序存储的，对于IO密集型的范围查询要比随机从磁盘读取每一个的数据IO要少的多。
-- 尽量减少冗余索引，冗余索引是在相同的列上按照相同的顺序创建相同类型的索引。
-- 删除长时间未使用的索引。
-</code></pre><h5 id="3-特定类型查询优化"><a href="#3-特定类型查询优化" class="headerlink" title="(3). 特定类型查询优化"></a>(3). 特定类型查询优化</h5><pre><code>- 优化COUNT()查询。COUNT()有两种不同的作用，其一是统计某个列值的数量，其二是统计行数。统计列值时要求列值是非空的，它不会统计NULL。如果确认括号内表达式不为空时，则就是在统计行数，作用等同于COUNT(**)。这里常常会有个误解，以为COUNT(col)性能更好，但其实这个只是统计了某列非NULL的数量。如果要统计函数，直接使用COUNT(**)就好，意义清晰，且性能更好。在有些场景下业务并不需要精确的COUNT值，此时可以用EXPLAIN来获取一个近似行数。EXPLAIN不需要真正的去执行查询，所以成本非常低。
-- 优化关联查询。在大量数据的情境下，表与表之间通过一个冗余字段来关联比直接使用JOIN有更好的性能。如果确实需要使用JOIN来进行查询，则需要注意：a. 确保ON和USING的列上有索引; b. 确保任何的GROUP BY和ORDER BY中的表达式只涉及一个表中的列，这样MySQL才会有可能使用索引来优化。
-- 优化LIMIT分页。需要使用分页操作时，通常使用LIMIT加上便宜来实现，同时加上合适的ORDER BY字段。如果有对应的索引，通常效率不错，否则，MySQL需要做大量的文件排序操作。一个常见的问题是当偏移量非常大的时候，例如LIMIT 10000 20，MySQL需要查询10020条数据并将之前的10000条数据全部丢弃。优化这种查询的方法就是尽可能使用覆盖索引进行扫描，而不是查询所有的列。然后根据需要做一次查询再返回所有的列，对于便宜量非常大是，这样做的效率提升会非常大。考虑下面的例子:
-&gt;  SELECT film_id,description FROM film ORDER BY title LIMIT 50,5;
-如果这个表非常的大，那么查询改成下面这样将大幅度提升查询效率:
-&gt; SELECT film.film_id,film.description FROM film INNER JOIN (SELECT film_id FROM film ORDER BY title LIMIT 50,5) AS tmp USING(film_id);
-有时候可以记录上次数据读取位置，下次可以直接从该位置开始扫描，这样就可以避免使用OFFSET，例如:
-&gt; SELECT id FROM t LIMIT 10000, 10;
-改为
-&gt; SELECT id FROM t WHERE id &gt; 10000 LIMIT 10;
-- 优化UNION。MySQL处理UINON的策略是先创建临时表，然后把各个查询结果插入到临时表中，最后再来做查询。因此很多优化策略在UNION中都没有很好的处理。此时需要手动将WHERE、LIMIT、ORDER BY等条件字句放到各个子查询中，以便优化器可以充分利用这些条件进行优化。除非确实需要服务器去重，否则一定要使用UNION ALL，如果没有ALL关键字，MySQL会给临时表加上DISTINCT选项，这会导致整个临时表的数据做唯一性检查，这样做的代价非常高。当然即使使用了ALL关键字，MySQL也总是将结果放入临时表，然后再读出返回给客户端。虽然很多时候没有这个必要，比如有时候可以直接把子查询的结果返回给客户端。
+        <h3 id="缓存这点子事"><a href="#缓存这点子事" class="headerlink" title="缓存这点子事"></a>缓存这点子事</h3><h5 id="缓存读："><a href="#缓存读：" class="headerlink" title="缓存读："></a>缓存读：</h5><pre><code>1. 尝试从缓存读取数据。
+2. 不命中，则继续到数据库中读取数据。
+3. 更新缓存。
+</code></pre><h5 id="缓存写："><a href="#缓存写：" class="headerlink" title="缓存写："></a>缓存写：</h5><pre><code>1. 先更新存储再更新缓存。
+2. 先更新缓存再更新存储。     
+
+因为缓存本质上也是个存储，所以更新的时候需要更新两个存储。难以保证两个操作同时成功或者同时失败。会导致以下问题：
+</code></pre><h5 id="如果是先更新存储，再更新缓存"><a href="#如果是先更新存储，再更新缓存" class="headerlink" title="如果是先更新存储，再更新缓存:"></a>如果是先更新存储，再更新缓存:</h5><pre><code>更新存储成功，更新缓存失败，会导致缓存中返回的旧数据，业务方读取命中缓存获取的也是旧数据。
+</code></pre><h5 id="先更新缓存，再更新存储"><a href="#先更新缓存，再更新存储" class="headerlink" title="先更新缓存，再更新存储:"></a>先更新缓存，再更新存储:</h5><pre><code>更新缓存成功，更新数据库失败。导致落地存储的数据不一致。
+</code></pre><h5 id="较为合理的流程"><a href="#较为合理的流程" class="headerlink" title="较为合理的流程:"></a>较为合理的流程:</h5><pre><code>1. 读请求，命中缓存则返回，未命中则读取数据库然后更新缓存。
+2. 写请求，先更新数据库，再删除缓存。
+</code></pre><h5 id="存在问题"><a href="#存在问题" class="headerlink" title="存在问题:"></a>存在问题:</h5><pre><code>1. 读请求未命中，读取数据库老数据，更新缓存，此时网络延迟，缓存更新操作被延迟。
+2. 写请求，更新数据库，同时删除了缓存。
+3. 延迟的读请求以老的数据更新了缓存，导致数据库与缓存数据不一致。
+
+1. 集群数据同步延迟，主机更新删除数据删除了缓存，但是改动并未同步到从机。
+2. 读请求从从机读取了就的数据，更新缓存，导致数据不一致。
+</code></pre><h5 id="墨菲定律：凡事只要可能出错，就一定会出错。"><a href="#墨菲定律：凡事只要可能出错，就一定会出错。" class="headerlink" title="墨菲定律：凡事只要可能出错，就一定会出错。"></a>墨菲定律：凡事只要可能出错，就一定会出错。</h5><h5 id="优化策略"><a href="#优化策略" class="headerlink" title="优化策略:"></a>优化策略:</h5><pre><code>1. 延迟双删，删除缓存后，延迟一秒再次删除缓存。
+2. binlog入队，通过队列重试保证删除缓存一定成功。(mysql -&gt; canal)
+3. 给缓存设置有效时间，保证数据的最终一致性。
+</code></pre><h5 id="具体方案需要依赖业务场景来看。"><a href="#具体方案需要依赖业务场景来看。" class="headerlink" title="具体方案需要依赖业务场景来看。"></a>具体方案需要依赖业务场景来看。</h5><h4 id="缓存常见问题"><a href="#缓存常见问题" class="headerlink" title="缓存常见问题"></a>缓存常见问题</h4><h5 id="缓存穿透："><a href="#缓存穿透：" class="headerlink" title="缓存穿透："></a>缓存穿透：</h5><pre><code>查询一个不存在的数据，由于数据库中没有该条数据，所以查询为空后也不会在缓存中保存。如果外部恶意大量请求这些不存在的数据，就会导致存储响应变慢甚至崩溃。
+</code></pre><h5 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h5><pre><code>1. 使用布隆过滤器，一定不存在的key会被直接拦截掉。
+2. 查询DB不存在的数据，也更新到缓存中，缓存一个空值。可以适当的缩短缓存时间让其尽快失效以免数据后后面有了数据后不一致。
+</code></pre><h5 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩:"></a>缓存雪崩:</h5><pre><code>设置缓存时设置了相同的时间，导致缓存数据在同一时间大量失效，导致大量请求落到存储上。
+</code></pre><h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h5><pre><code>对缓存过期时间，采用固定时间+随机时间的和，防止在缓存的失效时间相同即可基本上避免这种问题。
+</code></pre><h5 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿:"></a>缓存击穿:</h5><pre><code>大量的请求同时查询一个已经过期失效的key，导致请求透过缓存落到存储。
+</code></pre><h5 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案:"></a>解决方案:</h5><pre><code>1. 对查询存储的操作加锁，获取到锁的请求去查询存储更新缓存。其他请求在锁上等待
+2. 提前加锁，内部设置一个比缓存失效时间小一些的缓存更新时间，请求到达后发现到达更新时间既尝试加锁，加锁成功后更新数据，加锁失败的请求则直接返回现有的缓存数据。
 </code></pre>
       
 
@@ -234,21 +197,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">面试题</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">后台开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -299,7 +247,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/27/必知必会的面试题集合/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/12/10/缓存那点子事儿/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -313,18 +261,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/29/面试中的计算机网络之三次握手四次断开/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          面试中的计算机网络之三次握手四次断开
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/02/22/畅游Linux-2-如何愉快的处理文本/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">畅游Linux(2)-如何愉快的处理文件</div>
+    <a href="/2020/03/30/面试中的计算机网络-二/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">面试中的计算机网络(二)</div>
       <i class="icon-circle-right"></i>
     </a>
   
